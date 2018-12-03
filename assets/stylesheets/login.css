@@ -3,10 +3,11 @@
 	padding: 0;
 }
 body {
-        background-image: url("assets/images/emma-watson.jpg");
+        background-image: url("../images/loginBG.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        min-height: 100vh;
 }
 p {
     color: white;
@@ -14,10 +15,11 @@ p {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 }
 #loginWrapper {
-    height: 300px;
     width: 500px;
-    margin: auto;
-    margin-top: 20vh;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 #loginLogo {
     width: 100px;
