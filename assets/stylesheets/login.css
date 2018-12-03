@@ -1,0 +1,52 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+        background-image: url("assets/images/emma-watson.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+}
+p {
+    color: white;
+    font-size: 0.95em;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+#loginWrapper {
+    height: 300px;
+    width: 500px;
+    margin: auto;
+    margin-top: 20vh;
+}
+#loginLogo {
+    width: 100px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+#loginLogo img {
+    width: 100px;
+}
+input[type=email],[type=password] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+    margin: auto;
+    margin-top: 12px;
+    box-sizing: border-box;
+}
+input[type=email],[type=password]:focus {
+    outline: none;  
+}
+input[type=submit] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #FB4778;
+    margin: auto;
+    margin-top: 12px;
+    background-color: #FB4778;
+    color: white;
+    font-family: "Helvetica";
+}
