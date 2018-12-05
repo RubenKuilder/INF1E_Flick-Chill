@@ -19,7 +19,7 @@
                 </p>
                 <form action="system/login.php" method="post">
                     <input type="email" name="email" placeholder="Email..."><br/>
-                    <input type="password" name="password" placeholder="Password"><br/>
+                    <input type="password" name="password" placeholder="Password..."><br/>
                     <input type="submit" name="submit" value="LOG IN">
                 </form>
             </div>

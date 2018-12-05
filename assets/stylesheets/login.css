@@ -1,13 +1,13 @@
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 body {
-        background-image: url("../images/loginBG.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        min-height: 100vh;
+    background-image: url("../images/emma-watson.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
 }
 p {
     color: white;
@@ -51,4 +51,8 @@ input[type=submit] {
     background-color: #FB4778;
     color: white;
     font-family: "Helvetica";
+}
+input[type=submit]:hover {
+    background-color: #de4c8a;
+    border: 1px solid #de4c8a;
 }
