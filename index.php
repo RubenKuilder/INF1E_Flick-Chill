@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-//$configs = include('system/config.php');
+require('system/config.php');
 ?>
 <html>
     <head>
