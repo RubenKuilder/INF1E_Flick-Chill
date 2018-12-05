@@ -11,10 +11,17 @@
     </head>
     <body>
         <div class="flex-container">
-            <div class="titleID">
-                <h2>Popular</h2>
-            </div>
             <div class="iframeID">
+                <div class="hoverWrapper">
+                <div class="rating">
+                    <div class="red">
+                    </div>
+                    <div class="white">
+                    </div>
+                    <div class="green">
+                    </div>
+                </div>
+                </div>
             </div>
             <div class="iframeID">
             </div>
