@@ -1,7 +1,7 @@
 <?php
 $servername = 'localhost';
 $username = "root";
-$password = "";
+$password = "root";
 $databasename = 'Flick-Chill' ;
 $conn = new mysqli($servername, $username, $password, $databasename);
 

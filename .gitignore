@@ -38,4 +38,4 @@ Thumbs.db
 
 # Database config file #
 ########################
-config.php
+system/config.php
