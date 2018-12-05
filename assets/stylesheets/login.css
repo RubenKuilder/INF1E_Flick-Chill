@@ -3,7 +3,7 @@
     padding: 0;
 }
 body {
-    background-image: url("../images/emma-watson.jpg");
+    background-image: url("../images/loginBG.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -45,14 +45,15 @@ input[type=submit] {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #FB4778;
+    border: none;
     margin: auto;
     margin-top: 12px;
     background-color: #FB4778;
     color: white;
     font-family: "Helvetica";
+    transition: all 0.2s;
+    cursor: pointer;
 }
 input[type=submit]:hover {
-    background-color: #de4c8a;
-    border: 1px solid #de4c8a;
+    background-color: #ed4270;
 }
