@@ -45,12 +45,9 @@ body {
     opacity: 1;
 }
 .text-content {
-    height: 100%;
-    padding: 40px 10px 0 10px;
-    box-sizing: border-box;
-}
-.iframeID .overlay .text-content p {
-    font-size: 0.8em;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
 }
 .rating {
     width: 100%;
