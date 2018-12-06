@@ -14,11 +14,11 @@
             <div class="iframeID">
                 <div class="hoverWrapper">
                 <div class="rating">
-                    <div class="red">
+                    <div class="green">
                     </div>
                     <div class="white">
                     </div>
-                    <div class="green">
+                    <div class="red">
                     </div>
                 </div>
                 </div>
