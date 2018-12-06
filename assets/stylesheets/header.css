@@ -15,7 +15,6 @@ ul{
     padding: 0px;
 }
 ::placeholder{
-    font-size: 20px;
     color: #c9d0ba;
 }
 .head{
@@ -64,17 +63,18 @@ ul{
 .change .bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
     transform: rotate(45deg) translate(-8px, -8px) ;
+    margin-left: 5px;
+    margin-top: 13px;
 }
 .searchbar{
-    margin-left: 1350px;
+    margin-left: 970px;
     margin-top: 10px;
     margin-right: 35px;
     padding-left: 20px;
-    height: 30px;
+    height: 20px;
     width: 290px;
     border-radius: 5px;
     border: none;
-    opacity: 50%;
     background-color: #5a4f74;
     color: #ffffff;
 }
@@ -89,4 +89,7 @@ ul{
     margin-left: 26px;
     margin-top: 15px;
     height: 10px;
+}
+input{
+    padding-top: 10px;
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="assets/stylesheets/head.css">
+        <link rel="stylesheet" type="text/css" href="assets/stylesheets/header.css">
         <script>
-            function myFunction(x) {
+            function ourFunction(x) {
                 x.classList.toggle("change");
             }
         </script>
@@ -12,7 +12,7 @@
     <div class="head">
         <ul>
             <li>
-                <div class="menu" onclick="myFunction(this)">
+                <div class="menu" onclick="ourFunction(this)">
                     <div class="bar1"></div>
                     <div class="bar2"></div>
                     <div class="bar3"></div>
