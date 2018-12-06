@@ -6,6 +6,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>FlickAndChill</title>
         <link rel="stylesheet" type="text/css" href="assets/stylesheets/dashboard.css">
     </head>
@@ -181,7 +182,6 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut...</p>
                     </div>
-                    <p>Test titel shit</p>
                     <div class="rating">
                         <div class="green">
                         </div>
