@@ -39,3 +39,6 @@ Thumbs.db
 # Database config file #
 ########################
 system/config.php
+/nbproject/private/
+nbproject/project.properties
+nbproject/project.xml
