@@ -12,6 +12,7 @@
     <body>
         <div class="flex-container">
             <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
                 <div class="hoverWrapper">
                 <div class="rating">
                     <div class="green">
@@ -24,12 +25,16 @@
                 </div>
             </div>
             <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
             </div>
             <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
             </div>
             <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
             </div>
             <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
             </div>
             <div class="iframeID">
             </div>
