@@ -13,50 +13,220 @@
         <div class="flex-container">
             <div class="iframeID">
                 <img src="assets/images/emma-watson.jpg">
-                <div class="hoverWrapper">
-                <div class="rating">
-                    <div class="green">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
                     </div>
-                    <div class="white">
-                    </div>
-                    <div class="red">
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="iframeID">
                 <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="iframeID">
                 <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="iframeID">
                 <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="iframeID">
                 <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <p>Test titel shit</p>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="iframeID">
-            </div>
-            <div class="iframeID">
-            </div>
-            <div class="iframeID">
-            </div>
-            <div class="iframeID">
-            </div>
-            <div class="iframeID">
-            </div>
-            <div class="iframeID">
+                <img src="assets/images/emma-watson.jpg">
+                <div class="overlay">
+                    <div class="text-content">
+                        <h2>Titel</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut...</p>
+                    </div>
+                    <div class="rating">
+                        <div class="green">
+                        </div>
+                        <div class="white">
+                        </div>
+                        <div class="red">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

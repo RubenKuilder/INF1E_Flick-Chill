@@ -8,60 +8,78 @@ body {
     background-position: center;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     color: white;
+    min-height: 100vh;
 }
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding-left: 20px;
     padding-right: 20px;
 }
-.titleID {
-    
-}
 .iframeID img {
     width: 100%;
+    display: block;
 }
 .iframeID {
-    width: 20%;
+    width: calc(20% - 40px);
     margin: 20px;
     display: inline;
-}
-.iframeID:hover {
-    transform: scale(1.15);
-    transition: ease-out 0.3s;
-    filter: brightness(50%);
-}
-.hoverWrapper {
-    width: 100%;
-    height: 100%;
     position: relative;
 }
-.hoverWrapper:hover {
-    transition: ease-out 0.3s;   
+.iframeID:hover {
+    transform: scale(1.25);
+    transition: ease-out 0.3s;
+}
+.overlay {
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.3s;
+}
+.iframeID:hover .overlay {
+    opacity: 1;
+}
+.text-content {
+    height: 100%;
+    padding: 40px 10px 0 10px;
+    box-sizing: border-box;
+}
+.iframeID .overlay .text-content p {
+    font-size: 0.8em;
 }
 .rating {
     width: 100%;
     height: 5px;
     position: absolute;
     bottom: 0;
+    left: 0;
 }
 .red {
     width: 10%;
     height: 100%;
-    background: linear-gradient(to bottom,rgba(0,0,0,0) 0%, #f84949 100%);
+    background: #f84949;
     float: left;
 }
 .white {
     width: 30%;
     height: 100%;
-    background: linear-gradient(to bottom,rgba(0,0,0,0) 0%, #fff 100%);
+    background: #fff;
     float: left;
 }
 .green {
     width: 60%;
     height: 100%;
-    background: linear-gradient(to bottom,rgba(0,0,0,0) 0%, #26CB52 100%);
+    background: #26CB52;
     float: left;
+}
+
+@media only screen and (max-width:1000px) {
+    .iframeID {
+        width: calc(25% - 40px);
+    }
 }
