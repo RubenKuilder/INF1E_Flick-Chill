@@ -1,12 +1,12 @@
-body{
-  margin: 0px;
-  padding: 0px;  
+*{
+  margin: 0%;
+  padding: 0%;
+  font-family: helvetica;  
 }
 p{
     color: #ffffff;
 }
 li{
-   float: left;
    height: 50px;
 }
 ul{
@@ -14,25 +14,12 @@ ul{
     margin: 0px;
     padding: 0px;
 }
-::placeholder{
-    color: #c9d0ba;
-}
 .head{
     height: 50px;
-    width: 1920px;
+    width: 100%;
     background: linear-gradient(#48455D, #333142);
 }
-.size{
-    height: 30px;
-    width: 40px;
-}
-.logo{
-    margin-top: 12px;
-    height: 30px;
-    width: 40px;
-    float: left;
-    margin-left: 10px;
-}
+/*hamburger menu*/
 .menu{
     margin-top: 15px;
     margin-left: 10px;
@@ -47,29 +34,38 @@ ul{
     border-radius: 5px;
     transition: 0.4s;
 }
-/* Rotate first bar */
+/*onclick*/
 .change .bar1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
     transform: rotate(-45deg) translate(-9px, 6px) ;
    
 }
-
-/* Fade out the second bar */
 .change .bar2 {
     opacity: 0;
 }
-
-/* Rotate last bar */
 .change .bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
     transform: rotate(45deg) translate(-8px, -8px) ;
     margin-left: 5px;
     margin-top: 13px;
 }
+/*logo*/
+.logo{
+    margin-top: 12px;
+    height: 30px;
+    width: 40px;
+    margin-left: 10px;
+}
+.size{
+    height: 30px;
+    width: 40px;
+}
+/*zoekbalk*/
+.bar{
+    width: 320px;
+}
 .searchbar{
-    margin-left: 970px;
     margin-top: 10px;
-    margin-right: 35px;
     padding-left: 20px;
     height: 20px;
     width: 290px;
@@ -78,18 +74,33 @@ ul{
     background-color: #5a4f74;
     color: #ffffff;
 }
+input{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+::placeholder{
+    color: #c9d0ba;
+    font-size:  0.8em;
+}
+/*user*/
 .border{
-    margin-left: 4px;
     background-color: #ffffff;
     opacity: 0.4;
     width: 1px;
     height: 50px;
 }
 .user{
-    margin-left: 26px;
+    margin-right: calc(5% - 100px);
     margin-top: 15px;
     height: 10px;
 }
-input{
-    padding-top: 10px;
+/*positie*/
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.clear{
+    clear:left;
 }
