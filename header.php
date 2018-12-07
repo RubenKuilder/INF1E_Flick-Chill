@@ -30,12 +30,12 @@
             </li>
             <li class="right">
                 <div class="user">
-                    <p>username<p>
+                    <p>ourname<p>
                 </div>
             </li>
             <li class="right">
                 <div class="bar">
-                    <input class="searchbar" type="text" name="searchbar" placeholder="&#9773; Search...">
+                    <input class="searchbar" type="text" name="searchbar" placeholder="&#9773; поиски...">
                 </div>
             </li>
          

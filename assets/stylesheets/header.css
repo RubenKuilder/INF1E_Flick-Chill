@@ -36,17 +36,17 @@ ul{
 }
 /*onclick*/
 .change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-    transform: rotate(-45deg) translate(-9px, 6px) ;
+    -webkit-transform: rotate(-45deg) translate(-9px, 9px) ;
+    transform: rotate(-45deg) translate(-9px, 9px) ;
    
 }
 .change .bar2 {
     opacity: 0;
 }
 .change .bar3 {
-    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-    transform: rotate(45deg) translate(-8px, -8px) ;
-    margin-left: 5px;
+    -webkit-transform: rotate(45deg) translate(-9px, -9px) ;
+    transform: rotate(45deg) translate(-9px, -9px) ;
+    margin-left: 1%;
     margin-top: 13px;
 }
 /*logo*/
@@ -62,13 +62,14 @@ ul{
 }
 /*zoekbalk*/
 .bar{
-    width: 320px;
+    width: 8%;
 }
 .searchbar{
     margin-top: 10px;
-    padding-left: 20px;
+    padding-left: 1%;
+    margin-right: 5%;
     height: 20px;
-    width: 290px;
+    width: 1500%;
     border-radius: 5px;
     border: none;
     background-color: #5a4f74;
@@ -90,7 +91,8 @@ input{
     height: 50px;
 }
 .user{
-    margin-right: calc(5% - 100px);
+    margin-right: 5%;
+    margin-left: 5%;
     margin-top: 15px;
     height: 10px;
 }
