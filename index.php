@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<?php 
-require('system/config.php');
+<?php
+//require('system/config.php');
 ?>
 <html>
     <head>
