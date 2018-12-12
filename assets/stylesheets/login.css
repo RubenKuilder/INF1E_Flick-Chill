@@ -15,7 +15,8 @@ p {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 }
 #loginWrapper {
-    width: 500px;
+    width: calc(100% - 20px);
+    max-width: 500px;
     position: absolute;
     top: 45%;
     left: 50%;
