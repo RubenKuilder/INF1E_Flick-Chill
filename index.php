@@ -1,12 +1,12 @@
 <?php
 //session_start();
 
-// if ($_SESSION['id'] != "") {
-//     header('location:test.php');
-//     exit();
-// }
-//
-// require('system/config.php');
+/*if ($_SESSION['id'] != "") {
+    header('location:test.php');
+    exit();
+}
+
+require('system/config.php');*/
 ?>
 <!DOCTYPE html>
 <html>

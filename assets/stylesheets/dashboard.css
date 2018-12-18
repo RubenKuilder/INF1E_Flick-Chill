@@ -6,7 +6,7 @@ body {
     background: linear-gradient(#48455D, #333142);
     background-size: cover;
     background-position: center;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
     color: white;
     min-height: 100vh;
 }
@@ -14,22 +14,16 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    padding-left: 20px;
-    padding-right: 20px;
 }
 .iframeID img {
     width: 100%;
     display: block;
 }
 .iframeID {
-    width: calc(20% - 40px);
-    margin: 20px;
+    width: calc(18% - 5px);
+    margin: 5px;
     display: inline;
     position: relative;
-}
-.iframeID:hover {
-    transform: scale(1.25);
-    transition: ease-out 0.3s;
 }
 .overlay {
     background-color: rgba(0,0,0,0.5);
@@ -40,6 +34,7 @@ body {
     left: 0;
     opacity: 0;
     transition: all 0.3s;
+    font-size: 2vh;
 }
 .iframeID:hover .overlay {
     opacity: 1;
@@ -77,6 +72,6 @@ body {
 
 @media only screen and (max-width:1000px) {
     .iframeID {
-        width: calc(25% - 40px);
+        width: calc(25% - 5px);
     }
 }
