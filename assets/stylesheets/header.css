@@ -6,28 +6,15 @@
 p{
     color: #ffffff;
 }
-li{
-   height: 50px;
-}
-ul{
-    list-style-type: none;
-    margin: 0px;
-    padding: 0px;
-}
-.head{
-    height: 50px;
-    width: 100%;
-    background: linear-gradient(#48455D, #333142);
-}
 /*hamburger menu*/
 .menu{
     margin-top: 15px;
-    margin-left: 10px;
+    margin-left: 15%;
     height: 40px;
-    width: 50px;
+    width: 2,7em;
 }
 .bar1, .bar2, .bar3 {
-    width: 35px;
+    width: 1.7em;
     height: 2px;
     background-color: #ffffff;
     margin: 8px 0;
@@ -46,63 +33,6 @@ ul{
 .change .bar3 {
     -webkit-transform: rotate(45deg) translate(-9px, -9px) ;
     transform: rotate(45deg) translate(-9px, -9px) ;
-    margin-left: 1%;
+    margin-left: 0.4em;
     margin-top: 13px;
-}
-/*logo*/
-.logo{
-    margin-top: 12px;
-    height: 30px;
-    width: 40px;
-    margin-left: 10px;
-}
-.size{
-    height: 30px;
-    width: 40px;
-}
-/*zoekbalk*/
-.bar{
-    width: 8%;
-}
-.searchbar{
-    margin-top: 10px;
-    padding-left: 1%;
-    margin-right: 5%;
-    height: 20px;
-    width: 1500%;
-    border-radius: 5px;
-    border: none;
-    background-color: #5a4f74;
-    color: #ffffff;
-}
-input{
-    padding-top: 3px;
-    padding-bottom: 3px;
-}
-::placeholder{
-    color: #c9d0ba;
-    font-size:  0.8em;
-}
-/*user*/
-.border{
-    background-color: #ffffff;
-    opacity: 0.4;
-    width: 1px;
-    height: 50px;
-}
-.user{
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-top: 15px;
-    height: 10px;
-}
-/*positie*/
-.left{
-    float: left;
-}
-.right{
-    float: right;
-}
-.clear{
-    clear:left;
 }
