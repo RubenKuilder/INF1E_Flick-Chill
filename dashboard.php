@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php
+require('system/confiq.php');
 //require('system/confiq.php');
-//require('system/header.php');
+
 
 ?>
 <html>
