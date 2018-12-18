@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 
 /*if ($_SESSION['id'] != "") {
     header('location:test.php');
@@ -18,7 +18,7 @@ require('system/config.php');*/
     <body>
         <?php
         echo "<div style='background-color:white; padding:10px; position:absolute; top: 0; left: 0; z-index:999999;'>";
-        echo "ID-: " . $_SESSION['id'];
+      //  echo "ID-: " . $_SESSION['id'];
         echo "</div>";
         ?>
         <div id="loginWrapper">

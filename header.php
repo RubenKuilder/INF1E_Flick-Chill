@@ -35,10 +35,9 @@
             </li>
             <li class="right">
                 <div class="bar">
-                    <input class="searchbar" type="text" name="searchbar" placeholder="&#9773; поиски...">
+                    <input class="searchbar" type="text" name="searchbar" placeholder="&#9773; Zoeken...">
                 </div>
             </li>
-         
+
         </ul>
     </div>
-   
