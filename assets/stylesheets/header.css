@@ -6,6 +6,12 @@
   font-family: helvetica;  
 }
 
+body{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
+    color: white;
+    min-height: 100vh;
+}
+
 p{
     color: #ffffff;
 }
@@ -106,6 +112,10 @@ input[type=text]{
     margin-top: 15px;
     float: right;
     margin-right: 1.3%;
+}
+/*body*/
+.body{
+    height: 1080px;
 }
 
 
