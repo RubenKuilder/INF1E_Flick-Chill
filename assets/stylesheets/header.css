@@ -21,6 +21,7 @@ ul{
     height: 50px;
     width: 100%;
     box-shadow: 0px 2px 3px #252525;
+    margin-bottom: 30px;
 }
 
 /*hamburger menu*/
@@ -44,8 +45,7 @@ ul{
 
 .change .bar1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 9px) ;
-    transform: rotate(-45deg) translate(-9px, 9px) ;
-   
+    transform: rotate(-45deg) translate(-9px, 9px) ; 
 }
 
 .change .bar2 {
