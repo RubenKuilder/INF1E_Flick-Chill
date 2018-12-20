@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" type="text/css" href="assets/stylesheets/header.css">
-        <script>
+        <script> //hamburger menu script
             function ourFunction(x) {
                 x.classList.toggle("change");
             }
@@ -10,34 +12,36 @@
         <title> Flick N Chill</title>
     </head>
     <body>
-    <div class="head">
+    <!--begin body-->
+    <div class="header">
+        <!--begin header-->
         <ul>
-            <li class="left">
+            <li>
                 <div class="menu" onclick="ourFunction(this)">
                     <div class="bar1"></div>
                     <div class="bar2"></div>
                     <div class="bar3"></div>
                 </div>
             </li>
-            <li class="left">
+            <li>
                 <div class="logo">
-                    <img class="size" src="assets/images/logo.png" alt='Logo'>
+                    <img class="size" src="assets/images/logo_header.png" alt='Logo'>
                 </div>
             </li>
-            <li class="right">
+            <li>
+                <div class="user">
+                    <p>Naam gebruiker<p>
+                </div>
+            </li>
+            <li>
                 <div class="border">
                 </div>
             </li>
-            <li class="right">
-                <div class="user">
-                    <p>ourname<p>
-                </div>
-            </li>
-            <li class="right">
+            <li>
                 <div class="bar">
-                    <input class="searchbar" type="text" name="searchbar" placeholder="&#9773; Zoeken...">
+                    <input class="searchbar" type="text" name="searchbar" placeholder="&#x1F50E; &nbsp;Zoeken...">
                 </div>
             </li>
-
         </ul>
     </div>
+    <!--eind header-->
