@@ -26,9 +26,24 @@ if ($stmt = mysqli_prepare($conn, $sql)) {
 	die(mysqli_error($conn));
 }
 
-mysqli_stmt_bind_result($stmt, $id, $rol, $fname, $lname, $email, $ww, $pc);
+mysqli_stmt_bind_result($stmt, $id, $rol, $fname, $lname, $email, $ww);
 mysqli_stmt_store_result($stmt);
 
+if (mysqli_stmt_num_rows($stmt) > 0) {
+	while (mysqli_stmt_fetch($stmt)) {
+		if(password_verify($postPass, $ww)) {
+		    $_SESSION['id'] = $id;
+		    $_SESSION['email'] = $email;
+		    $_SESSION['name'] = $fname . " " . $lname;
+		    echo "Welcome " . $_SESSION['name'] . ", you'll be redirected in 5 seconds.";
+		} else {
+			echo "Login error.";
+			echo $hashed;
+		}
+	}
+}
+
+/*
 if (mysqli_stmt_num_rows($stmt) > 0) {
 	while (mysqli_stmt_fetch($stmt)) {
 		if (CRYPT_BLOWFISH == 1) {
@@ -57,6 +72,7 @@ if (mysqli_stmt_num_rows($stmt) > 0) {
 	echo "<br />";
 	echo "No entries found.";
 }
+*/
 
 mysqli_stmt_close($stmt);
 

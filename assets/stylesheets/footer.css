@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    color: #ffffff;
+}
+body{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
+    color: white;
+    min-height: 100vh;
+}
+.footer{
+    width: 100%;
+    background: linear-gradient(#55526a, #403e4f);
+    height: 48px;
+    position: absolute;
+    bottom: 0px;
+    font-size: 0.6em;
+}
+.social{
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    margin-right: 1%;
+    float: right;
+}
+.left{
+    margin-top: 10px;
+    margin-left: 1%;
+    float: left;
+}
+.made{
+    margin-top: 2px;
+}
