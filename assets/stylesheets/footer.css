@@ -11,7 +11,7 @@ body{
 .footer{
     width: 100%;
     background: linear-gradient(#55526a, #403e4f);
-    height: 48px;
+    height: 38px;
     position: absolute;
     bottom: 0px;
     font-size: 0.6em;
@@ -19,12 +19,12 @@ body{
 .social{
     width: 20px;
     height: 20px;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-right: 1%;
     float: right;
 }
 .left{
-    margin-top: 10px;
+    margin-top: 7.5px;
     margin-left: 1%;
     float: left;
 }
