@@ -22,7 +22,7 @@ require('system/header.php');
                         'offset': 0,
                         'limit': 10
                     },
-                });              
+                });
             }):
         </script>
     </head>
