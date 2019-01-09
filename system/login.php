@@ -8,7 +8,7 @@ require('config.php');
 
 $postEmail = $_POST['email'];
 $postPass = $_POST['password'];
-$sql = "SELECT * FROM account WHERE email = ?";
+$sql = "SELECT * FROM user WHERE email = ?";
 //$sql = "SELECT * FROM account WHERE email = ?";
 
 if ($stmt = mysqli_prepare($conn, $sql)) {
