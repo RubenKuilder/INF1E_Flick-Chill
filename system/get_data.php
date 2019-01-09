@@ -11,9 +11,9 @@ if(isset($_GET['offset']) && isset($_GET['limit'])) {
     $tableName = "video";
     //$selectQuery = "SELECT * FROM " . $tableName . " LIMIT {$limit} OFFSET {$offset}";
     if(isset($_GET['lastID'])) {
-        $selectQuery = "SELECT * FROM " . $tableName . " WHERE VideoID > " . $lastID;
+        $selectQuery = "SELECT * FROM " . $tableName . " WHERE VideoID > " . $lastID . " ORDER BY VideoID DESC";
     } else {
-        $selectQuery = "SELECT * FROM " . $tableName;
+        $selectQuery = "SELECT * FROM " . $tableName . " ORDER BY VideoID DESC";
     }
 
     if($stmt = mysqli_prepare($conn, $selectQuery)) {

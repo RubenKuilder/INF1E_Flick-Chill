@@ -12,12 +12,13 @@ $postFname = $_POST['fname'];
 $postLname = $_POST['lname'];
 $postEmail = $_POST['email'];
 $postPass = $_POST['pass'];
+$rol = $_POST['rol'];
 
 $hashed = password_hash($postPass, PASSWORD_DEFAULT);
 
 //-----------------------------
 // Step #3: Create the query
-$emailCheck = "SELECT * FROM account WHERE email = ?";
+$emailCheck = "SELECT * FROM user WHERE email = ?";
 
 // Step #4.1: Prepare query as a statement
 if($statement = mysqli_prepare($conn, $emailCheck))
@@ -52,10 +53,10 @@ if(mysqli_stmt_num_rows($statement) > 0)
     echo 'A user with the same email already exists.';
 }
 else {
-    $sql = "INSERT INTO account (firstname, lastname, email, password) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO user (voornaam, achternaam, email, password, id_Role) VALUES (?, ?, ?, ?, ?)";
 
 	if ($stmt = mysqli_prepare($conn, $sql)) {
-		mysqli_stmt_bind_param($stmt, 'ssss', $postFname, $postLname, $postEmail, $hashed);
+		mysqli_stmt_bind_param($stmt, 'sssss', $postFname, $postLname, $postEmail, $hashed, $rol);
 
 		if (mysqli_stmt_execute($stmt)) {
 			echo "Query executed";
