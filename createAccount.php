@@ -9,6 +9,7 @@
 	        <input type="text" name="lname" placeholder="Last name" required>
 	        <input type="email" name="email" placeholder="Email" required>
 	        <input class="pass" type="password" name="pass" placeholder="Password" required>
+	        <input type="text" name="rol" placeholder="Rol" required>
 	        <input type="submit" value="Create account">
 	    </form>
     </body>

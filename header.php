@@ -3,8 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="viewport" content="height=device-height, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="assets/stylesheets/header.css">
-        <link rel="stylesheet" type="text/css" href="assets/stylesheets/footer.css">
+        <link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css">
         <script> //hamburger menu script
             function ourFunction(x) {
                 x.classList.toggle("change");

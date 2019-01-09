@@ -8,7 +8,7 @@ require('config.php');
 
 $postEmail = $_POST['email'];
 $postPass = $_POST['password'];
-$sql = "SELECT * FROM account WHERE email = ?";
+$sql = "SELECT * FROM user WHERE email = ?";
 //$sql = "SELECT * FROM account WHERE email = ?";
 
 if ($stmt = mysqli_prepare($conn, $sql)) {
@@ -26,7 +26,7 @@ if ($stmt = mysqli_prepare($conn, $sql)) {
 	die(mysqli_error($conn));
 }
 
-mysqli_stmt_bind_result($stmt, $id, $rol, $fname, $lname, $email, $ww);
+mysqli_stmt_bind_result($stmt, $id, $vnaam, $anaam, $email, $ww, $rol);
 mysqli_stmt_store_result($stmt);
 
 if (mysqli_stmt_num_rows($stmt) > 0) {
@@ -34,11 +34,11 @@ if (mysqli_stmt_num_rows($stmt) > 0) {
 		if(password_verify($postPass, $ww)) {
 		    $_SESSION['id'] = $id;
 		    $_SESSION['email'] = $email;
-		    $_SESSION['name'] = $fname . " " . $lname;
+		    $_SESSION['name'] = $vnaam . " " . $anaam;
 		    echo "Welcome " . $_SESSION['name'] . ", you'll be redirected in 5 seconds.";
 		} else {
 			echo "Login error.";
-			echo $hashed;
+			echo $ww;
 		}
 	}
 }

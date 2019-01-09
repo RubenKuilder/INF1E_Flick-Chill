@@ -1,24 +1,24 @@
 <?php
-//session_start();
+session_start();
 
-/*if ($_SESSION['id'] != "") {
-    header('location:test.php');
+if ($_SESSION['id'] != "") {
+    header('location:dashboard.php');
     exit();
 }
 
-require('system/config.php');*/
+require('system/config.php');
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="assets/stylesheets/login.css">
+        <link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css">
     </head>
-    <body>
+    <body id="loginPage">
         <?php
-        echo "<div style='background-color:white; padding:10px; position:absolute; top: 0; left: 0; z-index:999999;'>";
-      //  echo "ID-: " . $_SESSION['id'];
+        echo "<div style='background-color:white; padding:10px; position:absolute; top: 0; left: 0; z-index:999999; color: #000'>";
+          echo "ID-: " . $_SESSION['id'];
         echo "</div>";
         ?>
         <div id="loginWrapper">
