@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="assets/stylesheets/footer.css"> 
+        <link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css"> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>  
