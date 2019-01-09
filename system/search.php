@@ -19,7 +19,8 @@
             mysqli_select_db($conn, "flicknchill");
             $search = $_POST['searchbar'];
 			// Step #3: Create the query
-			$query = "SELECT * FROM video where Description like '%$search%'";
+            $query = "SELECT Title, URL FROM video where Description like '%$search%';";
+           
 
             // Step #4: Prepare query as a statement
             if($statement = mysqli_prepare($conn, $query))
@@ -62,7 +63,7 @@
 
                     // Create cells
                     echo "<td>" . $title . "</td>";
-                    echo "<td>" .  $url . "</td>";
+                    echo '<td><iframe width="560" height="315" src="https://www.youtube.com/embed/'.$url.'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>';
 
                     // Close row
                     echo "</tr>";

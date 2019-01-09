@@ -40,7 +40,10 @@
                 </li>
                 <li>
                     <div class="bar">
+                    <form action="system/search.php" method="post">
                         <input class="searchbar" type="text" name="searchbar" placeholder="&#x1F50E; &nbsp;Zoeken...">
+                        <input type="submit" name="submit" value="search">
+                        </form>
                     </div>
                 </li>
             </ul>
