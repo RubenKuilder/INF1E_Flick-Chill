@@ -46,7 +46,8 @@ require('system/config.php');
                             data:
                             {
                                 'offset': 0,
-                                'limit': 10
+                                'limit': 10,
+                                'lastID': $('#dashboardContainer .card').last().data('id')
                             },
                             success: function (response)
                             {
