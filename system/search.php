@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><?php $zk = $_POST['searchbar']; echo 'zoeken naar' . $zk;  ?></title>
+        <title><?php $zk = $_POST['searchbar']; echo 'zoeken naar ' . $zk;  ?></title>
     </head>
     <body>
         <?php
