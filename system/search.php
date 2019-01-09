@@ -27,13 +27,13 @@
             {
                 //Step #5: Execute statement and check success
                 if(mysqli_stmt_execute($statement)) {
-                    echo "Query executed";
+                   
                 }
                 else {
-                    echo "Error executing query";
+                    echo "Search results cannot be loaded";
                     die(mysqli_error($conn));
                 }
-                echo"<br><br>--------------<br><br>";
+                
             }
             else{
                 die(mysqli_error($conn));
@@ -50,7 +50,6 @@
             // Step #7: Check if there are results in the statement
             if(mysqli_stmt_num_rows($statement) != 0)
             {
-                echo mysqli_stmt_num_rows($statement) . ": results in 0.001 seconds";
                 // Make table
                 echo "<table border='1'>";
                 // Make table header
