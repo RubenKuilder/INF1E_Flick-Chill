@@ -6,14 +6,23 @@ require('config.php');
 if(isset($_GET['offset']) && isset($_GET['limit'])) {
     $limit = $_GET['limit'];
     $offset = $_GET['offset'];
+    $search = $_GET['search'];
     $lastID = $_GET['lastID'];
 
     $tableName = "video";
     //$selectQuery = "SELECT * FROM " . $tableName . " LIMIT {$limit} OFFSET {$offset}";
     if(isset($_GET['lastID'])) {
-        $selectQuery = "SELECT * FROM " . $tableName . " WHERE VideoID > " . $lastID . " ORDER BY VideoID DESC";
+        if(isset($_GET['search'])) {
+            $selectQuery = "SELECT * FROM " . $tableName . " WHERE VideoID > " . $lastID . " AND Description like '%$search%' ORDER BY VideoID DESC";   
+        } else {
+            $selectQuery = "SELECT * FROM " . $tableName . " WHERE VideoID > " . $lastID . " ORDER BY VideoID DESC";
+        }
     } else {
-        $selectQuery = "SELECT * FROM " . $tableName . " ORDER BY VideoID DESC";
+        if(isset($_GET['search'])) {
+            $selectQuery = "SELECT * FROM " . $tableName . " WHERE Description like '%$search%' ORDER BY VideoID DESC";
+        } else {
+            $selectQuery = "SELECT * FROM " . $tableName . " ORDER BY VideoID DESC";
+        }
     }
 
     if($stmt = mysqli_prepare($conn, $selectQuery)) {

@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <?php
 require('system/config.php');
+require('header.php');
 
 ?>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>FlickAndChill</title>
-        <link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css">
-        <script type='text/javascript' src='assets/scripts/jquery.js'></script>
-        <script type='text/javascript'>
-            $(document).ready(function() {
+    <h1 id="dashboardTitle">Dashboard</h1>
+    <section id="dashboardContainer">
+    </section>
+    </body>
+    <script type='text/javascript'>
+        $(document).ready(function() {
 
+            var flag = 0;
+            var limit = 10;
 
-                var flag = 0;
-                var limit = 10;
+            var getUrlParameter = function getUrlParameter(sParam) {
+                var sPageURL = window.location.search.substring(1),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
 
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                    } else {
+                        return false;
+                    }
+                }
+            };
+
+            var search = getUrlParameter('search');
+
+            if(search == false) {
                 $.ajax(
                 {
                     url: 'system/get_data.php',
@@ -25,7 +42,7 @@ require('system/config.php');
                     data:
                     {
                         'offset': 0,
-                        'limit': 10
+                        'limit': limit
                     },
                     success: function (response)
                     {
@@ -46,7 +63,7 @@ require('system/config.php');
                             data:
                             {
                                 'offset': 0,
-                                'limit': 10,
+                                'limit': limit,
                                 'lastID': $('#dashboardContainer .card').last().data('id')
                             },
                             success: function (response)
@@ -57,13 +74,53 @@ require('system/config.php');
                         });
                     }
                 });
+            } else {
+                $.ajax(
+                {
+                    url: 'system/get_data.php',
+                    type: 'GET',
+                    dataType: 'text',
+                    data:
+                    {
+                        'offset': 0,
+                        'limit': limit,
+                        'search': search
+                    },
+                    success: function (response)
+                    {
+                        $('#dashboardContainer').append(response);
+                        flag += 10;
+                    }
+                });
+                
+                $(window).scroll(function() {
+                    if($(window).scrollTop() >= $(document).height() - $(window).height()) {
 
-            });
-        </script>
-    </head>
-    <body>
-    <h1 id="dashboardTitle">Dashboard</h1>
-    <section id="dashboardContainer">
-    </section>
-    </body>
+
+                        $.ajax(
+                        {
+                            url: 'system/get_data.php',
+                            type: 'GET',
+                            dataType: 'text',
+                            data:
+                            {
+                                'offset': 0,
+                                'limit': limit,
+                                'search': search,
+                                'lastID': $('#dashboardContainer .card').last().data('id')
+                            },
+                            success: function (response)
+                            {
+                                $('#dashboardContainer').append(response);
+                                flag += 10;
+                            }
+                        });
+                    }
+                });
+                console.log("Load tagged cards.");
+                console.log(search);
+            }
+
+        });
+    </script>
 </html>
