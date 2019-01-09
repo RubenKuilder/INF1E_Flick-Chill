@@ -6,10 +6,15 @@ require('config.php');
 if(isset($_GET['offset']) && isset($_GET['limit'])) {
     $limit = $_GET['limit'];
     $offset = $_GET['offset'];
+    $lastID = $_GET['lastID'];
 
     $tableName = "video";
     //$selectQuery = "SELECT * FROM " . $tableName . " LIMIT {$limit} OFFSET {$offset}";
-    $selectQuery = "SELECT * FROM " . $tableName;
+    if(isset($_GET['lastID'])) {
+        $selectQuery = "SELECT * FROM " . $tableName . " WHERE VideoID > " . $lastID;
+    } else {
+        $selectQuery = "SELECT * FROM " . $tableName;
+    }
 
     if($stmt = mysqli_prepare($conn, $selectQuery)) {
 
@@ -28,7 +33,7 @@ if(isset($_GET['offset']) && isset($_GET['limit'])) {
     if(mysqli_stmt_num_rows($stmt) > 0) {
         while(mysqli_stmt_fetch($stmt)) {
             echo "
-            <div class='card' style='background-image: url(assets/images/uploads/". $thumbnail .");'>
+            <div class='card' style='background-image: url(assets/images/uploads/". $thumbnail .");' data-id='" . $id . "'>
                 <div class='overlay'>
                     <div class='overlayTextContainer'>
                         <h2>". $title ."</h2>
@@ -42,12 +47,6 @@ if(isset($_GET['offset']) && isset($_GET['limit'])) {
                 </div>
             </div>";
         }
-    } else {
-        echo "<br />";
-        echo "<br />";
-        echo "<br />";
-        echo "<br />";
-        echo "Nothing in the selected table.";
     }
 }
 ?>

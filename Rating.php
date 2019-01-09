@@ -12,21 +12,21 @@
                         <input type="radio" id="f-option" name="selector" value="1">
                         <label for="f-option">Slecht</label>
 
-                        <div class="slecht"><div class="inside"></div></div>
+                        <div class="slecht"><div></div></div>
                     </li>
 
                     <li>
                         <input type="radio" id="s-option" name="selector" value="2" checked="checked">
                         <label for="s-option">Neutraal</label>
 
-                        <div class="check"><div class="inside"></div></div>
+                        <div class="check"><div></div></div>
                     </li>
 
                     <li>
                         <input type="radio" id="t-option" name="selector" value="3" >
                         <label for="t-option" >Goed</label>
 
-                        <div class="goed"><div class="inside"></div></div>
+                        <div class="goed"><div></div></div>
                     </li>
                 </ul>
                 <div>
@@ -42,8 +42,8 @@
 // video en user id moeten nog veranderd worden..........................
             $userid = 3;
             $videoid = 1;
-            
-            
+
+
             $db_name = "flicknchill";
             $DBConnect = mysqli_connect('localhost', 'root', '');
             if ($DBConnect === FALSE) {

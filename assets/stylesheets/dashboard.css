@@ -54,7 +54,20 @@ body {
     padding: 10px;
     box-sizing: border-box;
     max-height: 100%;
+    width: 100%;
     overflow: hidden;
+}
+
+.overlayTextContainer h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 60px;
+}
+
+.overlayTextContainer p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 38px;
 }
 
 .overlay .ratingContainer {
