@@ -10,6 +10,7 @@ session_start();
         <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css">
         <script type='text/javascript' src='assets/scripts/jquery.js'></script>
+        <script type='text/javascript' src='assets/scripts/main.js'></script>
         <script> //hamburger menu script
             function ourFunction(x) {
                 x.classList.toggle("change");
