@@ -11,12 +11,22 @@ require('header.php');
     <div class="overlayPopup">
         <div class="overlayBackground"></div>
         <div class="popupContent">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="videoIframe">
+                <img src="assets/images/emma-watson.jpg" alt="bae">
+            </div>
+            <div class="rating">
+                <?php   //             require 'Rating.php';?>
+            </div>
+            <div class="discription">
+                <h2>Sam Jackson</h2>
+                <p>
+                    Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb.
+                </p>
+            </div>
+            <div class="popupFooter">
+                <a href="https://youtu.be/z-zxaKQfW6s">https://youtu.be/z-zxaKQfW6s</a>
+            </div>
+                
         </div>
     </div>
     

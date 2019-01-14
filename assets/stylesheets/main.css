@@ -328,7 +328,6 @@ input[type=submit]:hover {
     left: 0;
     width: 100vw;
     height: 100vh;
-
     display: none;
     z-index: 9999999999;
 }
@@ -342,11 +341,28 @@ input[type=submit]:hover {
 .popupContent {
     width: calc(100% - 40px);
     max-width: 960px;
-    background-color: red;
+    background: linear-gradient(#48455D, #333142);
+    background-size: cover;
+    background-position: center;
     top: 50%;
     left: 50%;
     position: absolute;
     transform: translate(-50%,-50%);
+    border-radius: 10px;
+}
+.popupContent img{
+    width:98%;
+    border-radius: 10px;
+    margin: auto 10px;
+    margin-top: 10px;
+}
+.discription{
+    margin: 11px;
+}
+.popupFooter{
+    padding-top: 20px;
+    margin: auto 11px;
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width:1400px) {
