@@ -1,10 +1,4 @@
-html,body{
-    background: #99ccff;
-    color: #fff;
-
-    margin: 0;
-}
-.goed {
+.goed input[type=submit]{
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -14,7 +8,7 @@ html,body{
     cursor: pointer;
     border-radius: 500px;
 }
-.neutraal {
+.neutraal input[type=submit]{
     background-color: #fff;
     border: none;
     color: white;
@@ -25,7 +19,7 @@ html,body{
     border-radius: 500px;
 }
 
-.slecht {
+.slecht input[type=submit]{
     background-color: #ff0000;
     border: none;
     color: white;
@@ -35,9 +29,3 @@ html,body{
     cursor: pointer;
     border-radius: 500px;
 }
-p{
-    color: white;
-        border: solid white 2px;
-        font-size: 11;
-}
-
