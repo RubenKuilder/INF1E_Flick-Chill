@@ -15,7 +15,7 @@ require('header.php');
                 <img src="assets/images/emma-watson.jpg" alt="bae">
             </div>
             <div class="rating">
-                <?php   //             require 'Rating.php';?>
+                <?php               require 'Rating.php';?>
             </div>
             <div class="discription">
                 <h2>Sam Jackson</h2>
