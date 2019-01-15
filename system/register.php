@@ -2,8 +2,8 @@
 session_start();
 
 if ($_SESSION['id'] != "") {
-    header('location:test.php');
-    exit();
+   header('location:test.php');
+   exit();
 }
 
 require('config.php');
