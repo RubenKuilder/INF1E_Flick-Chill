@@ -32,6 +32,7 @@ mysqli_stmt_store_result($stmt);
 if (mysqli_stmt_num_rows($stmt) > 0) {
 	while (mysqli_stmt_fetch($stmt)) {
 		if(password_verify($postPass, $ww)) {
+			$_SESSION['rol'] = $rol;
 		    $_SESSION['id'] = $id;
 		    $_SESSION['email'] = $email;
 		    $_SESSION['name'] = $vnaam . " " . $anaam;
