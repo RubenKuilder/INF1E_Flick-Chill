@@ -151,19 +151,7 @@ input[type=email],[type=password]:focus {
 input[type=text] {
     border-radius: 5px;
 }
-input[type=submit] {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    margin: auto;
-    margin-top: 12px;
-    background-color: #FB4778;
-    color: white;
-    font-family: "Helvetica";
-    transition: all 0.2s;
-    cursor: pointer;
-}
+
 input[type=submit]:hover {
     cursor: pointer;
     background-color: #ed4270;
@@ -404,4 +392,19 @@ input[type=submit]:hover {
     .card {
         height: calc(56vw - 40px);
     }
+}
+.searchbutton{
+   
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: auto;
+    margin-top: 12px;
+    background-color: #FB4778;
+    color: white;
+    font-family: "Helvetica";
+    transition: all 0.2s;
+    cursor: pointer;
+
 }
