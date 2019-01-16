@@ -309,6 +309,10 @@ input[type=submit]:hover {
 .header.mobile ul {
     padding: 8px 20px;
 }
+
+.header.mobile li {
+    padding: 10px 0;
+}
 /* MOBILE HEADER END */
 
 /* HEADER CSS END */

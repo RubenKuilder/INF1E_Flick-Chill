@@ -58,10 +58,6 @@ if(isset($_GET['offset']) && isset($_GET['limit'])) {
                 </div>
             </div>";
         }
-    } else {
-        echo "<p>
-        Geen video's gevonden.
-        </p>";
     }
 }
 ?>
