@@ -1,32 +1,71 @@
 <?php
-// Create database connection
-$db = mysqli_connect("localhost", "root", "", "flicknchill");
-
-// Initialize message variable
-$msg = "";
-
-// If upload button is clicked ...
-if (isset($_POST['upload'])) {
-    // Get image name
-    $Thumbnail = $_FILES['Thumbnail']['name'];
-    $Title = htmlentities($_POST['Title']);
-    $URL = htmlentities($_POST['URL']);
-    // Get text
-    $Description = mysqli_real_escape_string($db, $_POST['Description']);
-    // image file directory
-    $target = "thumbnails/" . basename($Thumbnail);
-
-    $sql = "INSERT INTO video (Thumbnail, Title, Description, URL) VALUES ('$Thumbnail', '$Title', '$Description', '$URL')";
-    // execute query
-    mysqli_query($db, $sql);
-
-    if (move_uploaded_file($_FILES['Thumbnail']['tmp_name'], $target)) {
-        $msg = "Image uploaded successfully";
-    } else {
-        $msg = "Failed to upload image";
-    }
+session_start();
+if ($_SESSION['id'] = "") {
+    header('location:index.php');
+    exit();
 }
-$result = mysqli_query($db, "SELECT * FROM video");
+
+require 'system/config.php';
+
+if(isset($_POST['upload'])){
+    if(empty($_POST['Description']) || empty($_POST['Title']) || empty($_POST['URL'])){
+        $submit_err = "Please fill in all fields.";
+    }
+    if(empty($_FILES['Thumbnail']['tmp_name'])){
+        $file_err = "Upload a file.";
+    }
+    else {
+        $sug_d = htmlentities(trim($_POST['Description']));
+        $sug_ti = htmlentities(trim($_POST['Title']));
+        $sug_u = htmlentities(trim($_POST['URL']));
+        $userID = $_SESSION["id"];
+        
+        $upload_dir = "assets/images/uploads/";
+        $target_file = $upload_dir.basename($_FILES['Thumbnail']['name']);
+        $upload_ok = 1;
+        if(!empty($_POST['file'])){
+            $check = getimagesize($_FILES['Thumbnail']['tmp_name']);
+            if($check !== FALSE){
+                $upload_ok = 1;
+            }
+            else {
+                $upload_ok = 0;
+            }
+        }
+        if($upload_ok == 0){
+            $file_err = "Upload a file.";
+        }
+        else{
+            if(move_uploaded_file($_FILES['Thumbnail']['tmp_name'], $target_file)){
+                $sug_tu = $upload_dir.basename($_FILES['Thumbnail']['name']);
+            }
+            else{
+                $file_err = "Upload a file.";
+            }
+        }
+        
+        $query = "INSERT INTO video (userID, Description, URL, Thumbnail, Title) VALUES (?, ?, ?, ?, ?)";
+        if ($stmt = mysqli_prepare($conn, $query)) {
+            mysqli_stmt_bind_param($stmt, 'sssss', $userID, $sug_d, $sug_u, $sug_tu, $sug_ti);
+            if (mysqli_stmt_execute($stmt)) 
+            {
+                $msg = "Suggestion added! Thank you!";
+            } 
+            else 
+            {
+                $msg = "Error with sending your suggestion: ";
+                die(mysqli_error($conn));
+            }
+            } 
+        else 
+        {
+            $msg = "Error connecting to: <br />";
+            die(mysqli_error($conn));
+        }
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,9 +77,9 @@ $result = mysqli_query($db, "SELECT * FROM video");
     <body>
         <div id="suggestieswrapper">
             <h2>Fill in your video details</h2>
-            <form method="POST" action="suggestiesv2.php" enctype="multipart/form-data">
+            <form method="POST" action="<?php $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
                 <input type="hidden" name="size" value="1000000">
-                <input type="file" name="Thumbnail">
+                <input type="file" name="Thumbnail"><?php if(isset($file_err)){ echo $file_err; }?>
                 <textarea 
                     name="Description" 
                     placeholder="Description"
@@ -54,7 +93,8 @@ $result = mysqli_query($db, "SELECT * FROM video");
                     name="URL" 
                     placeholder="Playback-ID"
                     class="inputs"></textarea>
-                <button type="submit" name="upload" id="submit">SUBMIT</button>
+                <input type="submit" name="upload" id="submit"/>
+                <p><?php if(isset($submit_err)){ echo "<br/>". $submit_err; } if(isset($msg)){ echo "<br/>". $msg; }?></p>
             </form>
         </div>
     </body>
