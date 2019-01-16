@@ -1,13 +1,15 @@
 // Main Javascript here
 $(document).ready(function() {
-    var navBtnsWidth = $('.navBtns').css('width', 'auto').width();
+    var desktopNavBtnsWidth = $('.navBtns').css('width', 'auto').width();
+    var mobileNavBtnsHeight = $('.navBtnsMobile').css('height', 'auto').height();
 
     $('.navBtns').css('width', '0');
+    $('.navBtnsMobile').css('height', '0');
 
-    function updateNav(){
-        var navFullWidth = navBtnsWidth + 20 + 600;
+    function updateDesktopNav(){
+        var desktopNavFullWidth = desktopNavBtnsWidth + 600;
 
-        if($(window).width() < navFullWidth) {
+        if($(window).width() < desktopNavFullWidth) {
             $('.header.desktop').css('display','none');
             $('.header.mobile').css('display','block');
         } else {
@@ -15,13 +17,13 @@ $(document).ready(function() {
             $('.header.mobile').css('display','none');
         }
 
-        console.log(navFullWidth);
+        console.log(desktopNavFullWidth);
     };
 
-    $(window).on('resize', updateNav);
-    updateNav();
+    $(window).on('resize', updateDesktopNav);
+    updateDesktopNav();
 
-    $(".menu").click(function() {
+    $(".header.desktop .menu").click(function() {
         var curWidth = $('.navBtns').width();
         $(this).toggleClass("active");
 
@@ -29,10 +31,22 @@ $(document).ready(function() {
             if(curWidth > 0) {
                 $('.navBtns').width(curWidth).animate({width: 0}, 1000);
             } else {
-                $('.navBtns').width(curWidth).animate({width: navBtnsWidth}, 1000);
+                $('.navBtns').width(curWidth).animate({width: desktopNavBtnsWidth}, 1000);
             }
-        } else {
-            console.log("test");
+        }
+    });
+
+    $(".header.mobile .menu").click(function() {
+        var curHeight = $('.navBtnsMobile').height();
+        $(this).toggleClass("active");
+
+        if($(this).closest(".header").hasClass("mobile")) {
+            console.log("TRUE");
+            if(curHeight > 0) {
+                $('.navBtnsMobile').height(curHeight).animate({height: 0}, 1000);
+            } else {
+                $('.navBtnsMobile').height(curHeight).animate({height: mobileNavBtnsHeight}, 1000);
+            }
         }
     });
 
@@ -59,7 +73,7 @@ $(document).ready(function() {
     var search = getUrlParameter('search');
 
     if(search == false) {
-		$(".navBtns li:first-child a").addClass("active");
+		$(".header li:first-child a").addClass("active");
 
         $.ajax(
         {
@@ -102,10 +116,10 @@ $(document).ready(function() {
             }
         });
     } else {
-    	if($(".navBtns li:first-child a." + search) == false) {
+    	if($(".header li:first-child a." + search) == false) {
 			alert("dafuckk");
 		} else {
-			$(".navBtns li a."+search).addClass("active");
+			$(".header li a."+search).addClass("active");
 		}
 
         $.ajax(
