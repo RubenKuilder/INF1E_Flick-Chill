@@ -32,9 +32,9 @@ session_start();
                     <img class="logo" src="assets/images/logo_header.png" alt='Logo'>
                 </div>
                 <div class="navRight">
-                    <form action="dashboard.php" method="get">
+                    <form action="dashboard.php" method="get" >
                         <input class="searchbar" type="text" name="search" placeholder="Search...">
-                        <input type="submit" name="submit" value="search">
+                        <input type="submit" name="submit" value="search" class="search">
                     </form>
                     <div class="border"></div>
                     <li class="user">
