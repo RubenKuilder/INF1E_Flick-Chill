@@ -8,7 +8,7 @@ if ($_SESSION['id'] = "") {
 require 'system/config.php';
 
 if(isset($_POST['upload'])){
-    if(empty($_POST['Description']) || empty($_POST['Title']) || empty($_POST['URL'])){
+    if(empty($_POST['Description']) || empty($_POST['Title']) || empty($_POST['URL']) || empty($_POST['Tags'])){
         $submit_err = "Please fill in all fields.";
     }
     if(empty($_FILES['Thumbnail']['tmp_name'])){
@@ -20,12 +20,13 @@ if(isset($_POST['upload'])){
         $sug_u = htmlentities(trim($_POST['URL']));
         $userID = $_SESSION["id"];
         $text = $_POST["Tags"];
-            $arrayExplode = explode(" ", $text);
-            foreach ($arrayExplode as $woord) {
-                if (isset($woord))
-                    echo $woord . "<br />";
-                
-                }
+        $arrayExplode = explode(" ", $text);
+        foreach ($arrayExplode as $key => $values) {
+        $subarrayString = "('$key','" . implode($values, "','") . "')";
+        $resultStrings[] = $subarrayString;
+ }
+
+ $result = implode($resultStrings, ",");
         
         $upload_dir = "assets/images/uploads/";
         $target_file = $upload_dir.basename($_FILES['Thumbnail']['name']);
@@ -51,7 +52,7 @@ if(isset($_POST['upload'])){
             }
         }
         
-        $query = "INSERT INTO video (userID, Description, URL, Thumbnail, Title) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO video (userID, Description, URL, Thumbnail, Title) VALUES (?, ?, ?, ?, ?);";
         if ($stmt = mysqli_prepare($conn, $query)) {
             mysqli_stmt_bind_param($stmt, 'sssss', $userID, $sug_d, $sug_u, $sug_tu, $sug_ti);
             if (mysqli_stmt_execute($stmt)) 
@@ -63,7 +64,11 @@ if(isset($_POST['upload'])){
                 $msg = "Error with sending your suggestion: ";
                 die(mysqli_error($conn));
             }
-            } 
+        }
+        $query2 = "INSERT INTO video_tag VALUES (?)";
+        if ($stmt = mysqli_prepare($conn, $query)){
+            mysqli_stmt_bind_param($stmt, 's', $subarrayString);
+        } 
         else 
         {
             $msg = "Error connecting to: <br />";
