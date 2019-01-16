@@ -16,8 +16,6 @@ $(document).ready(function() {
             $('.header.desktop').css('display','block');
             $('.header.mobile').css('display','none');
         }
-
-        console.log(desktopNavFullWidth);
     };
 
     $(window).on('resize', updateDesktopNav);
@@ -41,7 +39,6 @@ $(document).ready(function() {
         $(this).toggleClass("active");
 
         if($(this).closest(".header").hasClass("mobile")) {
-            console.log("TRUE");
             if(curHeight > 0) {
                 $('.navBtnsMobile').height(curHeight).animate({height: 0}, 1000);
             } else {
@@ -172,5 +169,9 @@ $(document).ready(function() {
 
     $(".overlayBackground").click(function() {
         $(".overlayPopup").css('display','none');
+    });
+
+    $(".closeLoginMessage").click(function() {
+        $(".loginMessage").remove();
     });
 });
