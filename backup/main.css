@@ -190,7 +190,6 @@ input[type=submit]:hover {
     height: 60px;
     overflow: hidden;
     transition: 0.2s all;
-    white-space: nowrap;
 }
 
 .navBtns.active {
@@ -283,7 +282,6 @@ input[type=submit]:hover {
     font-family: 'Karla', sans-serif;
     font-size: 14px;
     border-radius: 0 5px 5px 0;
-    box-sizing: border-box;
 }
 
 .header form input[type='submit'] {
@@ -314,37 +312,6 @@ input[type=submit]:hover {
 
 .header.mobile li {
     padding: 10px 0;
-    border-bottom: 2px solid #514E62;
-}
-
-.header.mobile form {
-    padding: 17px;
-    box-sizing: border-box;
-    width: 100%;
-}
-
-.header.mobile input {
-    width: 100%;
-}
-
-.header.mobile form input[type='text'] {
-    border-radius: 5px 5px 0 0;
-    padding: 10px 15px;
-}
-
-.header.mobile form input[type='submit'] {
-    border-radius: 0 0 5px 5px;
-    border-top: 2px solid #514E62;
-    width: 100%;
-    padding: 10px 15px;
-}
-
-.navBtnsMobile {
-    overflow: hidden;
-}
-
-.navBtnsMobile li a.active {
-    color: #FB4778;
 }
 /* MOBILE HEADER END */
 

@@ -55,17 +55,11 @@ session_start();
                     <div class="bar"></div>
                     <div class="bar"></div>
                 </div>
-                <div class="navBtnsMobile">
-                    <ul>
-                        <li><a href="dashboard.php">Home</a></li>
-                        <li><a href="?search=test" class="test">Test</a></li>
-                        <li><a href="?search=free" class="free">Free</a></li>
-                        <li><a href="?search=tech" class="tech">Tech</a></li>
-                    </ul>
-                    <form action="dashboard.php" method="get">
-                        <input class="searchbar" type="text" name="search" placeholder="Search...">
-                        <input type="submit" name="submit" value="search">
-                    </form>
-                </div>
+                <ul>
+                    <li><a href="dashboard.php">Home</a></li>
+                    <li><a href="?search=test" class="test">Test</a></li>
+                    <li><a href="?search=free" class="free">Free</a></li>
+                    <li><a href="?search=tech" class="tech">Tech</a></li>
+                </ul>
             </nav>
         </div>
