@@ -1,15 +1,14 @@
 <?php
 
 require('system/config.php');
-
 $dataID = $_GET['dataID'];
-$_SESSION["videoIdRating"] = $dataID;
-
 $tableName = "video";
 $selectQuery = "SELECT Description, URL, Title FROM " . $tableName . " WHERE VideoID = " . $dataID;
 
 if ($stmt = mysqli_prepare($conn, $selectQuery)) {
-
+    session_start();
+    $_SESSION["videoIdRate"] = $dataID;
+    
     if (!mysqli_stmt_execute($stmt)) {
         echo "Error executing query";
         echo "<br /><br />--------------<br /><br />";
