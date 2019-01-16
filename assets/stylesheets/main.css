@@ -310,6 +310,51 @@ input[type=submit]:hover {
     width: 2px;
     background-color: #5B586E;
 }
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.droptop{
+    width: 100%;
+    background-color: #5B586E;
+    height: 2px;
+    margin-top: 20px;
+}
+
+.droplist{
+    width: 100%;
+    background-color: #5B586E;
+    height: 2px;
+}
+
+.dropcontent{
+    background-color:#48455D;
+    width: 100%;
+    margin-left: -24.5%;
+    padding-right: 2.5%;
+    right: 0;
+    display: none;
+    position: absolute;
+    border-left: #5B586E;
+    border-left-style: solid;
+    border-left-width: 2px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropcontent {
+    display: block;
+}
+
+.dropbutton{
+    text-align: center;
+    padding-top: 20px;
+    padding-left: 20%; 
+    padding-bottom: 20px;
+    display: inline-block;
+  }
+  
 /* MOBILE HEADER START*/
 .header.mobile ul {
     padding: 8px 20px;

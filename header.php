@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,11 +34,48 @@ session_start();
                         <input type="submit" name="submit" value="search" class="search">
                     </form>
                     <div class="border"></div>
-                    <li class="user">
+                    <li class="user dropdown">
                         <?php
                             echo $_SESSION['name'];
                         ?>
-                    </li>
+                        <?php 
+                        if($_SESSION['rol'] > 2){
+                            echo ' <div class="dropcontent">
+                                        <div class="droptop">
+                                        </div>
+                                        <p class="dropalign">
+                                            <a class="dropbutton" href="suggestiesv3.php">suggestions</a>
+                                        </p>
+                                        <div class="droplist">
+                                        </div>
+                                        <p class="dropalign">
+                                            <a class="dropbutton" href="admin.php">Admin</a>
+                                        </p>
+                                        <div class="droplist">
+                                        </div>
+                                        <p class="dropalign">
+                                            <a class="dropbutton" href="system/logout.php">Log Out</a>
+                                        </p>
+                                    </div>';
+                        } else {
+                            echo ' <div class="dropcontent">
+                                        <div class="droptop">
+                                        </div>
+                                        <p class="dropalign">
+                                            <a class="dropbutton" href="suggestiesv3.php">suggestions</a>
+                                        </p>
+                                        <div class="droplist">
+                                        </div>
+                                        <p class="dropalign">
+                                            <a class="dropbutton" href="system/logout.php">Log Out</a>
+                                        </p>
+                                        <div class="droplist">
+                                        </div>
+                                    </div>';
+                        }
+                        ?>
+            </ul>
+
                 </div>
             </ul>
         </div>
