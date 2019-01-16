@@ -39,7 +39,7 @@ session_start();
                 <div class="navRight">
                     <form action="dashboard.php" method="get">
                         <input class="searchbar" type="text" name="search" placeholder="Search...">
-                        <input type="submit" name="submit" value="search">
+                        <input type="submit" name="submit" value="search" class="searchbutton">
                     </form>
                     <div class="border"></div>
                     <li class="user">
