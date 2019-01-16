@@ -20,13 +20,6 @@ if(isset($_POST['upload'])){
         $sug_u = htmlentities(trim($_POST['URL']));
         $userID = $_SESSION["id"];
         $text = $_POST["Tags"];
-        $arrayExplode = explode(" ", $text);
-        foreach ($arrayExplode as $key => $values) {
-        $subarrayString = "('$key','" . implode($values, "','") . "')";
-        $resultStrings[] = $subarrayString;
- }
-
- $result = implode($resultStrings, ",");
         
         $upload_dir = "assets/images/uploads/";
         $target_file = $upload_dir.basename($_FILES['Thumbnail']['name']);
@@ -45,37 +38,46 @@ if(isset($_POST['upload'])){
         }
         else{
             if(move_uploaded_file($_FILES['Thumbnail']['tmp_name'], $target_file)){
-                $sug_tu = $upload_dir.basename($_FILES['Thumbnail']['name']);
+                $sug_tu = basename($_FILES['Thumbnail']['name']);
             }
             else{
                 $file_err = "Upload a file.";
             }
         }
-        
         $query = "INSERT INTO video (userID, Description, URL, Thumbnail, Title) VALUES (?, ?, ?, ?, ?);";
+        
         if ($stmt = mysqli_prepare($conn, $query)) {
             mysqli_stmt_bind_param($stmt, 'sssss', $userID, $sug_d, $sug_u, $sug_tu, $sug_ti);
             if (mysqli_stmt_execute($stmt)) 
             {
-                $msg = "Suggestion added! Thank you!";
+                $query2 = "INSERT INTO tag (Genre) VALUES (?)";
+                if ($stmt2 = mysqli_prepare($conn, $query2)){
+                    mysqli_stmt_bind_param($stmt2, 's', $text);
+                    if (mysqli_stmt_execute($stmt2)){
+                    $msg = "Suggestion added! Thank you!";
+                    }
+                    else 
+                    {
+                        $msg = "Error with sending your suggestion: ";
+                        die(mysqli_error($conn));
+                    }
+                    mysqli_stmt_close($stmt2);
+                } 
+                else 
+                {
+                    $msg = "Error connecting to: <br />";
+                    die(mysqli_error($conn));
+                    
+                }
+                mysqli_stmt_close($stmt);
+                mysqli_close($conn);
+                } 
             } 
             else 
             {
                 $msg = "Error with sending your suggestion: ";
                 die(mysqli_error($conn));
             }
-        }
-        $query2 = "INSERT INTO video_tag VALUES (?)";
-        if ($stmt = mysqli_prepare($conn, $query)){
-            mysqli_stmt_bind_param($stmt, 's', $subarrayString);
-        } 
-        else 
-        {
-            $msg = "Error connecting to: <br />";
-            die(mysqli_error($conn));
-        }
-        mysqli_stmt_close($stmt);
-        mysqli_close($conn);
         }
     }
 ?>
