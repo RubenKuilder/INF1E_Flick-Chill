@@ -4,10 +4,12 @@ require('config.php');
 //echo "test";
 
 if(isset($_GET['offset']) && isset($_GET['limit'])) {
-    $limit = $_GET['limit'];
-    $offset = $_GET['offset'];
-    $search = $_GET['search'];
-    $lastID = $_GET['lastID'];
+    $limit = filter_var($_GET['limit'], FILTER_SANITIZE_SPECIAL_CHARS);
+    $offset = filter_var($_GET['offset'], FILTER_SANITIZE_SPECIAL_CHARS);
+    $search = filter_var($_GET['search'], FILTER_SANITIZE_SPECIAL_CHARS);
+    $lastID = filter_var($_GET['lastID'], FILTER_SANITIZE_SPECIAL_CHARS);
+
+    $search = str_replace("+", "%", $search);
 
     $tableName = "video";
     //$selectQuery = "SELECT * FROM " . $tableName . " LIMIT {$limit} OFFSET {$offset}";
@@ -56,6 +58,10 @@ if(isset($_GET['offset']) && isset($_GET['limit'])) {
                 </div>
             </div>";
         }
+    } else {
+        echo "<p>
+        Geen video's gevonden.
+        </p>";
     }
 }
 ?>
