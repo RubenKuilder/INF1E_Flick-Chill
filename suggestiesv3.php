@@ -19,6 +19,13 @@ if(isset($_POST['upload'])){
         $sug_ti = htmlentities(trim($_POST['Title']));
         $sug_u = htmlentities(trim($_POST['URL']));
         $userID = $_SESSION["id"];
+        $text = $_POST["Tags"];
+            $arrayExplode = explode(" ", $text);
+            foreach ($arrayExplode as $woord) {
+                if (isset($woord))
+                    echo $woord . "<br />";
+                
+                }
         
         $upload_dir = "assets/images/uploads/";
         $target_file = $upload_dir.basename($_FILES['Thumbnail']['name']);
@@ -92,6 +99,10 @@ if(isset($_POST['upload'])){
                 <textarea 
                     name="URL" 
                     placeholder="Playback-ID"
+                    class="inputs"></textarea>
+                <textarea 
+                    name="Tags" 
+                    placeholder="Tags"
                     class="inputs"></textarea>
                 <input type="submit" name="upload" id="submit"/>
                 <p><?php if(isset($submit_err)){ echo "<br/>". $submit_err; } if(isset($msg)){ echo "<br/>". $msg; }?></p>
