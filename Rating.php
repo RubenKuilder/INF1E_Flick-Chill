@@ -8,10 +8,11 @@
     <body>
 
         <?php
+        
 // video en user id moeten nog veranderd worden..........................
-        $userid = 6;
-        $videoid = 2;
-
+       
+        $userid = 90;
+        $videoid = $_SESSION['videoIdRating'];
 
         $db_name = "flick-chill";
         $DBConnect = mysqli_connect('localhost', 'root', '');
@@ -79,12 +80,12 @@
                 $query = "INSERT INTO user_likes (UserID, VideoID, Rating) VALUES (" . $userid . ", " . $videoid . ", " . $rating . ")";
                 if ($stmt = mysqli_prepare($DBConnect, $query)) {
                     if (mysqli_stmt_execute($stmt)) {
-                        echo "Query executed";
+                       
                     } else {
                         echo "Error executing query";
                         die(mysqli_error($DBConnect));
                     }
-                    echo "<br /><br />--------------------<br /><br />";
+                 
                 } else {
                     echo "Error with prepare: <br />";
                     die(mysqli_error($DBConnect));
