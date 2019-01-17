@@ -10,20 +10,20 @@ if (isset($_POST['update'])){
     } else  {
             $DBName = "flicknchill";
             if(!mysqli_select_db($conn, $DBName)){
-                echo "There are no video's waiting.";
+                echo "connection error.";
             } else {
             $TableName = "video";
            // $id = $_GET['id'];
             $vgst = htmlentities($_POST['voorgesteld']);
            
             $live = htmlentities($_POST['livestat']);
-           
+           $iApp = $live;
            
             $getid = ($_GET['id']);
             $SQLstring2 = "UPDATE $TableName SET voorgesteld=?, goedgekeurd=?, livestat=? WHERE videoID =?";
-            //print $SQLstring2;
+            print $SQLstring2;
             if ($stmt = mysqli_prepare($conn, $SQLstring2)) {
-                mysqli_stmt_bind_param($stmt, 'sssi', $vgst, $live, $live, $getid);
+                mysqli_stmt_bind_param($stmt, 'sssi', $vgst, $iApp, $live, $getid);
                 $QueryResult2 = mysqli_stmt_execute($stmt);
                 if ($QueryResult2 === FALSE) {
                     echo "<p>Unable to execute the query.</p>1"
@@ -63,11 +63,11 @@ if (isset($_GET['id'])){
                    }
    
            mysqli_stmt_fetch($stmt);
-           
+           echo $vId; 
         echo " <h2>Change the video status</h2>
 
            </form>
-            <form method='post' action='admin.php?id='.$vId.'>
+            <form method='post' action='admin.php?id='$vId'>
            <p><input type='text' name='voorgesteld' value='$title'></p>
            
            <p><input type='number' name='livestat' value='$iLive'></p>
