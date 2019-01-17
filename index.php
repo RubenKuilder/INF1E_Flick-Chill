@@ -50,9 +50,7 @@ require('system/config.php');
                     if(password_verify($postPass, $ww)) {
                         ?>
                         <script type="text/javascript">
-                            window.setTimeout(function() {
-                                window.location.href = "dashboard.php";
-                            }, 3000);
+                        window.location.href = "dashboard.php";
                         </script>
                         <?php
                         $_SESSION['id'] = $id;
@@ -60,7 +58,7 @@ require('system/config.php');
                         $_SESSION['name'] = $vnaam . " " . $anaam;
                         $_SESSION['rol'] = $rol;
                         echo "<div class='loginMessage'>
-                                Welcome " . $_SESSION['name'] . ", you'll be redirected in <span class='countdown'>3</span> seconds.
+                                Welcome " . $_SESSION['name'] . ", it looks like you're having trouble getting onto the dashboard. Try clicking <a href='dashboard.php'>here</a> to visit it.
                             </div>";
                     } else {
                         echo "<div class='loginMessage'>
