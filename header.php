@@ -45,32 +45,34 @@
                                         <div class="droptop">
                                         </div>
                                         <p class="dropalign">
-                                            <a class="dropbutton" href="suggestiesv3.php">suggestions</a>
+                                            <a class="dropbutton" href="suggestiesv3.php">Suggestions</a>
                                         </p>
                                         <div class="droplist">
                                         </div>
                                         <p class="dropalign">
-                                            <a class="dropbutton" href="admin.php">Admin</a>
+                                            <a class="dropbutton" href="adminoverview.php">Admin</a>
                                         </p>
                                         <div class="droplist">
                                         </div>
                                         <p class="dropalign">
                                             <a class="dropbutton" href="system/logout.php">Log Out</a>
                                         </p>
+                                        <div class="dropbottom">
+                                        </div>
                                     </div>';
                         } else {
                             echo ' <div class="dropcontent">
                                         <div class="droptop">
                                         </div>
                                         <p class="dropalign">
-                                            <a class="dropbutton" href="suggestiesv3.php">suggestions</a>
+                                            <a class="dropbutton" href="suggestiesv3.php">Suggestions</a>
                                         </p>
                                         <div class="droplist">
                                         </div>
                                         <p class="dropalign">
                                             <a class="dropbutton" href="system/logout.php">Log Out</a>
                                         </p>
-                                        <div class="droplist">
+                                        <div class="dropbottom">
                                         </div>
                                     </div>';
                         }
