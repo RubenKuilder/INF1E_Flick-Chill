@@ -93,7 +93,7 @@ if(isset($_POST['upload'])){
             <h2>Fill in your video details</h2>
             <form method="POST" action="<?php $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
                 <input type="hidden" name="size" value="1000000">
-                <input type="file" name="Thumbnail"><p><?php if(isset($file_err)){ echo "<br/>" . $file_err; }?></p>
+                <input type="file" name="Thumbnail">
                 <textarea 
                     name="Description" 
                     placeholder="Description"
@@ -111,8 +111,9 @@ if(isset($_POST['upload'])){
                     name="Tags" 
                     placeholder="Tags"
                     class="inputs"></textarea>
-                <input type="submit" name="upload" id="submit"/>
-                <p><?php if(isset($submit_err)){ echo "<br/>". $submit_err; } if(isset($msg)){ echo "<br/>". $msg; }?></p>
+                <input type="submit" name="upload" value="Submit" id="submit"/>
+                <p class="error_msg"><?php if(isset($file_err)){ echo "<br/>" . $file_err; }?></p>
+                <p class="error_msg"><?php if(isset($submit_err)){ echo "<br/>". $submit_err; } if(isset($msg)){ echo "<br/>". $msg; }?></p>
             </form>
         </div>
     </body>
