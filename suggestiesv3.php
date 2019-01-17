@@ -1,94 +1,76 @@
 <?php
 session_start();
-if ($_SESSION['id'] = "") {
+
+if ($_SESSION['id'] == "") {
     header('location:index.php');
     exit();
 }
+?>
+<!DOCTYPE html>
+<?php
+require('system/config.php');
+require('header.php');
 
-require 'system/config.php';
+        if(isset($_POST['upload'])) {
+            $sug_d = htmlentities(trim($_POST['Description']));
+            $sug_ti = htmlentities(trim($_POST['Title']));
+            $sug_u = htmlentities(trim($_POST['URL']));
+            $tags = htmlentities(trim($_POST['Tags']));
+            $thumbnail = filter_var($_FILES["Thumbnail"]["name"], FILTER_SANITIZE_STRING);
+            $userID = $_SESSION["id"];
 
-if(isset($_POST['upload'])){
-    if(empty($_POST['Description']) || empty($_POST['Title']) || empty($_POST['URL']) || empty($_POST['Tags'])){
-        $submit_err = "Please fill in all fields.";
-    }
-    if(empty($_FILES['Thumbnail']['tmp_name'])){
-        $file_err = "Upload a file.";
-    }
-    else {
-        $sug_d = htmlentities(trim($_POST['Description']));
-        $sug_ti = htmlentities(trim($_POST['Title']));
-        $sug_u = htmlentities(trim($_POST['URL']));
-        $userID = $_SESSION["id"];
-        $text = $_POST["Tags"];
-        
-        $upload_dir = "assets/images/uploads/";
-        $target_file = $upload_dir.basename($_FILES['Thumbnail']['name']);
-        $upload_ok = 1;
-        if(!empty($_POST['file'])){
-            $check = getimagesize($_FILES['Thumbnail']['tmp_name']);
-            if($check !== FALSE){
-                $upload_ok = 1;
-            }
-            else {
-                $upload_ok = 0;
-            }
-        }
-        if($upload_ok == 0){
-            $file_err = "Upload a file.";
-        }
-        else{
-            if(move_uploaded_file($_FILES['Thumbnail']['tmp_name'], $target_file)){
-                $sug_tu = basename($_FILES['Thumbnail']['name']);
-            }
-            else{
-                $file_err = "Upload a file.";
-            }
-        }
-        $query = "INSERT INTO video (userID, Description, URL, Thumbnail, Title) VALUES (?, ?, ?, ?, ?);";
-        
-        if ($stmt = mysqli_prepare($conn, $query)) {
-            mysqli_stmt_bind_param($stmt, 'sssss', $userID, $sug_d, $sug_u, $sug_tu, $sug_ti);
-            if (mysqli_stmt_execute($stmt)) 
-            {
-                $query2 = "INSERT INTO tag (Genre) VALUES (?)";
-                if ($stmt2 = mysqli_prepare($conn, $query2)){
-                    mysqli_stmt_bind_param($stmt2, 's', $text);
-                    if (mysqli_stmt_execute($stmt2)){
-                    $msg = "Suggestion added! Thank you!";
-                    }
-                    else 
-                    {
-                        $msg = "Error with sending your suggestion: ";
-                        die(mysqli_error($conn));
-                    }
-                    mysqli_stmt_close($stmt2);
-                } 
-                else 
-                {
-                    $msg = "Error connecting to: <br />";
-                    die(mysqli_error($conn));
-                    
+            $target_dir = "assets/images/uploads/";
+            $target_file = $target_dir . basename($_FILES["Thumbnail"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            // Check if image file is a actual image or fake image
+            if(isset($_POST["submit"])) {
+                $check = getimagesize($_FILES["Thumbnail"]["tmp_name"]);
+                if($check !== false) {
+                    //echo "File is an image - " . $check["mime"] . ".";
+                    $uploadOk = 1;
+                } else {
+                    //echo "File is not an image.";
+                    $uploadOk = 0;
                 }
-                mysqli_stmt_close($stmt);
-                mysqli_close($conn);
-                } 
-            } 
-            else 
-            {
-                $msg = "Error with sending your suggestion: ";
+            }
+            // Check if file already exists
+            if (file_exists($target_file)) {
+                echo "File already exists.";
+                $uploadOk = 0;
+            }
+            // Check file size
+            if ($_FILES["Thumbnail"]["size"] > 500000) {
+                echo "Your file is too large.";
+                $uploadOk = 0;
+            }
+            // Allow certain file formats
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+                echo "Only JPG, JPEG, PNG & GIF files are allowed.";
+                $uploadOk = 0;
+            }
+
+            $tableName = "video";
+            $insertQuery = "INSERT INTO " . $tableName . " (UserID, Description, URL, Thumbnail, Title) VALUES (?, ?, ?, ?, ?)";
+            if($stmt = mysqli_prepare($conn, $insertQuery)) {
+                mysqli_stmt_bind_param($stmt, 'issss', $userID, $sug_d, $sug_u, $thumbnail, $sug_ti);
+
+                if($uploadOk != 0) {
+                    if (mysqli_stmt_execute($stmt) && move_uploaded_file($_FILES["Thumbnail"]["tmp_name"], $target_file)) {
+                        echo "Video suggestion added to database.";
+                    } else {
+                        echo "Video couldn't be added.";
+                    }
+                } else {
+                    echo "Your file was not uploaded.";
+                }
+            } else {
                 die(mysqli_error($conn));
             }
         }
-    }
-?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Image Upload</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="suggesties.css">
-    </head>
-    <body>
+
+        ?>
         <div id="suggestieswrapper">
             <h2>Fill in your video details</h2>
             <form method="POST" action="<?php $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
