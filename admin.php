@@ -4,27 +4,36 @@ include ("system/config.php");
 //if (isset($_SESSION['rol'] = "3")){
 
 if (isset($_POST['update'])){
-    $conn = mysqli_connect("localhost", "root", "");
-    if (empty($_POST['voorgesteld']) || empty($_POST['livestat'])) {
+   
+    if (empty($_POST['title']) || empty($_POST['live'])) {
         echo "<p>You must fill in all fields before you hit the submit button.</p>";
     } else  {
             $DBName = "flicknchill";
             if(!mysqli_select_db($conn, $DBName)){
                 echo "connection error.";
             } else {
-            $TableName = "video";
-           // $id = $_GET['id'];
             $vgst = htmlentities($_POST['voorgesteld']);
-           
             $live = htmlentities($_POST['livestat']);
            $iApp = $live;
-           
             $getid = ($_GET['id']);
-            $SQLstring2 = "UPDATE $TableName SET voorgesteld=?, goedgekeurd=?, livestat=? WHERE videoID =?";
-            print $SQLstring2;
-            if ($stmt = mysqli_prepare($conn, $SQLstring2)) {
-                mysqli_stmt_bind_param($stmt, 'sssi', $vgst, $iApp, $live, $getid);
-                $QueryResult2 = mysqli_stmt_execute($stmt);
+            if (isset($_POST['stat'])) {
+                $SQLstring = "DELETE video WHERE videoID =?;";
+                print $SQLstring;
+                if ($stmt = mysqli_prepare($conn, $SQLstring)) {
+                    mysqli_stmt_bind_param($stmt, 'i', $getid);
+                    $QueryResult2 = mysqli_stmt_execute($stmt);
+            }
+           
+        
+            else 
+            { 
+                $SQLstring2 = "UPDATE video SET Title=?, isApp=?, isLive=? WHERE videoID =?;";
+                print $SQLstring2;
+                if ($stmt = mysqli_prepare($conn, $SQLstring2)) {
+                    mysqli_stmt_bind_param($stmt, 'sssi', $vgst, $iApp, $live, $getid);
+                    $QueryResult2 = mysqli_stmt_execute($stmt);
+                }  
+        }
                 if ($QueryResult2 === FALSE) {
                     echo "<p>Unable to execute the query.</p>1"
                     . "<p>Error code "
@@ -32,27 +41,27 @@ if (isset($_POST['update'])){
                     . ": "
                     . mysqli_error($conn)
                     . "</p>";
-                } else {
-                   // echo "<h1>Update is succesfull.</h1>";
-                    header ("location:adminoverview.php?up=suc");
-                }
+                } 
 //Clean up the $stmt after use
-                mysqli_stmt_close($stmt);
+
             }
-            mysqli_close($conn);
+
         }
     }
-    }
+}
+
+    
+    
  // }
  
 if (isset($_GET['id'])){
-               if (!mysqli_select_db($conn, "flicknchill")) {
+                $DBName = "flicknchill";
+               if (!mysqli_select_db($conn, $DBName)) {
                    echo "<p>There are no video's to view</p>";
                } else {
                    
                    $id = $_GET['id'];
                    $SQLstring = "SELECT * FROM video WHERE VideoID=?;";
-                   //$stmt = mysqli_stmt_init($conn);
                        //Bind param
                        //run param inside database
                        if ($stmt = mysqli_prepare($conn, $SQLstring)) {
@@ -63,16 +72,15 @@ if (isset($_GET['id'])){
                    }
    
            mysqli_stmt_fetch($stmt);
-           echo $vId; 
-        echo " <h2>Change the video status</h2>
+        echo " <h2>Change the video status</h2>";
+        echo "The video description is: " . $desc;
 
-           </form>
+           echo "</form>
             <form method='post' action='admin.php?id='$vId'>
-           <p><input type='text' name='voorgesteld' value='$title'></p>
+           <p>Title: <input type='text' name='title' value='$title'></p>
            
-           <p><input type='number' name='livestat' value='$iLive'></p>
-           <p><input type='radio' name='stat value='app' checked='check'> Approve video</p>
-           <p><input type='radio' name='stat' value='drop'> Remove video</p>
+           <p>Live status :<input type='number' name='live' value='$iLive'> 0 = offline and 1 = online</p>
+           <p><input type='checkbox' name='drop'> Delete video</p>
            <p><input type='submit' name='update' value='update'></p>
        </form><br>
        <p><a href='adminoverview.php'> click here to show submitted video's</a></p>"; 
