@@ -1,18 +1,27 @@
+<?php
+session_start();
+if ($_SESSION['id'] == "") {
+    header('location:index.php');
+    exit();
+}
+?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Bug Report</title>
+        <title>Admin overview</title>
+        
     </head>
     <body>
 
         <?php
+
        include ("header.php");
        include ("system/config.php");
        // if (isset($_SESSION['rol'] = "2" Or "3")){
 
 
             if (!mysqli_select_db($conn, "flicknchill")) {
-                echo "<p>There are no bugs reported</p>";
+                echo "<p>There are no video's suggested</p>";
             } else {
                
                 $SQLstring = "SELECT * FROM video WHERE isLive = 0;";
@@ -23,6 +32,7 @@
                     if (mysqli_stmt_num_rows($stmt) == 0) {
                         echo "<p>There are no videos suggested</p>";
                     } else {
+                        echo "<p><a href='dashboard.php'>Click here to go back to the dashboard</a></p><br>";
                         echo "<p>The following videos are suggested:</p>";
                         echo "<table width='100%' border='1'>";
                         echo    "<tr><th>User id</th>
@@ -44,9 +54,10 @@
                             echo "<td><a href='admin.php?id=".$vId."'>Click to update.</a></td></tr>";
                         }
                         
+                        
                     }
                     mysqli_stmt_close($stmt);
-                    echo "<p><a href='dashboard.php'>Click here to go back to the home page</a></p>";
+                    
                 }else{
                     echo 'prep failed';
                 }
