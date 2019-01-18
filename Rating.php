@@ -9,37 +9,24 @@
 
         <?php
 // video en user id moeten nog veranderd worden..........................
-
+session_start();
         $userid = $_SESSION['id'];
 
 
-        $db_name = "flick-chill";
-        $DBConnect = mysqli_connect('localhost', 'root', '');
-        if ($DBConnect === FALSE) {
-            echo "<p>Unable to connect to the database server.</p>"
-            . "<p>Error code " . mysqli_errno() . ": "
-            . mysqli_error() . "</p>";
-        } else {
-            $db = mysqli_select_db($DBConnect, $db_name);
-            if ($db === FALSE) {
-                echo "<p>Unable to connect to the database server.</p>"
-                . "<p>Error code " . mysqli_errno() . ": "
-                . mysqli_error() . "</p>";
-                mysqli_close($DBConnect);
-                $DBConnect = FALSE;
-            }
-        }
+        require('system/config.php');
+       
+
         if (isset($_SESSION["videoIdRate"])) {
             $videoid = $_SESSION["videoIdRate"];
         }
-        if ($stmt = mysqli_prepare($DBConnect, "SELECT Count(Rating) FROM user_likes WHERE UserID = " . $userid . " AND VideoID = " . $videoid)) {
+        if ($stmt = mysqli_prepare($conn, "SELECT Count(Rating) FROM user_likes WHERE UserID = " . $userid . " AND VideoID = " . $videoid)) {
             if (!mysqli_stmt_execute($stmt)) {
                 echo "Error executing query";
-                die(mysqli_error($DBConnect));
+                die(mysqli_error($conn));
             }
         } else {
             echo "Error with prepare: <br />";
-            die(mysqli_error($DBConnect));
+            die(mysqli_error($conn));
         }
 
         mysqli_stmt_bind_result($stmt, $countR);
@@ -78,16 +65,16 @@
         if ($rating != 0) {
 
             $query = "INSERT INTO user_likes (UserID, VideoID, Rating) VALUES (" . $userid . ", " . $videoid . ", " . $rating . ")";
-            if ($stmt = mysqli_prepare($DBConnect, $query)) {
+            if ($stmt = mysqli_prepare($conn, $query)) {
                 if (mysqli_stmt_execute($stmt)) {
                     header('Location: Dashboard.php');
                 } else {
                     echo "Error executing query";
-                    die(mysqli_error($DBConnect));
+                    die(mysqli_error($conn));
                 }
             } else {
                 echo "Error with prepare: <br />";
-                die(mysqli_error($DBConnect));
+                die(mysqli_error($conn));
             }
         }
         // }

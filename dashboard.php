@@ -163,8 +163,9 @@ require('header.php');
     //    alert('OK!');
     // });
 </script>
-
-    
+<?php
+require('footer.php')
+?>
     </body>
 
 </html>

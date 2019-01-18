@@ -8,7 +8,7 @@ body {
     background-position: center;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
     color: white;
-    min-height: 100vh;
+    min-height:100%;
 }
 
 ul {
@@ -135,7 +135,7 @@ body#loginPage {
 #loginLogo img {
     width: 100px;
 }
-input[type=email],[type=password] {
+#loginWrapper input[type=email],[type=password] {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
@@ -144,17 +144,29 @@ input[type=email],[type=password] {
     margin-top: 12px;
     box-sizing: border-box;
 }
-input[type=email],[type=password]:focus {
+#loginWrapper input[type=email],[type=password]:focus {
     outline: none;  
 }
-input[type=text] {
+#loginWrapper input[type=text] {
     border-radius: 5px;
 }
 
-input[type=submit]:hover {
+#loginWrapper input[type=submit], #suggestieswrapper input[type=submit] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: auto;
+    margin-top: 12px;
+    background-color: #FB4778;
+    color: white;
+    font-family: "Helvetica";
+    transition: all 0.2s;
     cursor: pointer;
-    background-color: #ed4270;
+}
 
+#loginWrapper input[type=submit]:hover {
+    background-color: #ed4270;
 }
 .search{
 
@@ -401,9 +413,10 @@ input[type=submit]:hover {
 /* FOOTER CSS START */
 .footer{
     width: 100%;
+    margin-top: 30px;
     background: linear-gradient(#55526a, #403e4f);
     height: 38px;
-    position: absolute;
+    position: relative;
     bottom: 0px;
     font-size: 0.6em;
 }
@@ -439,6 +452,9 @@ input[type=submit]:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
 
 .popupContent {
@@ -488,6 +504,55 @@ input[type=submit]:hover {
     padding: 20px;
 }
 
+/* SUGGESTIONS PAGE START */
+#suggestieswrapper{
+    width: calc(100% - 20px);
+    max-width: 700px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#suggestieswrapper h2{
+    width: 100%;
+    color: white;
+    font-size: 0.95em;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#suggestieswrapper input{
+    width: 100%;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 12px;
+    box-sizing: border-box;
+}
+
+#suggestieswrapper textarea{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 12px;
+    box-sizing: border-box;
+    font-family: "Helvetica";
+    resize: none;
+}
+
+#suggestieswrapper .inputs{
+    border: 1px solid white;
+    padding: 10px;
+    overflow-y:scroll;
+}
+
+#suggestieswrapper #description{
+    height: 100px;
+    overflow-y:scroll;
+    word-wrap: break-word;
+}
+/* SUGGESTIONS PAGE END */
+
 @media screen and (max-width:1400px) {
     #dashboardContainer {
         grid-template-columns: repeat(auto-fill, calc(25vw - 40px));
@@ -526,4 +591,7 @@ input[type=submit]:hover {
     .card {
         height: calc(56vw - 40px);
     }
+}
+p.error_msg{
+    color: red;
 }
