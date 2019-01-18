@@ -17,7 +17,7 @@
 
             // Step #2: Selecting the database (assuming it has already been created)
             mysqli_select_db($conn, "flickchill");
-            $search = $_POST['searchbar'];
+            $search = htmlentities$_POST['searchbar'];
 			// Step #3: Create the query
             $query = "SELECT Title, URL FROM video where Description like '%$search%';";
            
