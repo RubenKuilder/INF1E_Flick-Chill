@@ -15,9 +15,11 @@ require('header.php');
             $sug_d = htmlentities(trim($_POST['Description']));
             $sug_ti = htmlentities(trim($_POST['Title']));
             $sug_u = htmlentities(trim($_POST['URL']));
-            $tags = htmlentities(trim($_POST['Tags']));
+            $sug_ta = htmlentities(trim($_POST['Tags']));
             $thumbnail = filter_var($_FILES["Thumbnail"]["name"], FILTER_SANITIZE_STRING);
             $userID = $_SESSION["id"];
+
+            $explodedTags = explode(" ", $sug_ta);
 
             $target_dir = "assets/images/uploads/";
             $target_file = $target_dir . basename($_FILES["Thumbnail"]["name"]);
@@ -59,6 +61,41 @@ require('header.php');
                 if($uploadOk != 0) {
                     if (mysqli_stmt_execute($stmt) && move_uploaded_file($_FILES["Thumbnail"]["tmp_name"], $target_file)) {
                         echo "Video suggestion added to database.";
+
+                        $selectTags = "SELECT * FROM tag WHERE Genre = ?";
+                            
+                        $i = 0;
+                        foreach ($explodedTags as $tag) {
+                            if($selectTagsStmt = mysqli_prepare($conn, $selectTags)) {
+                                mysqli_stmt_bind_param($selectTagsStmt, 's', $explodedTags[$i]);
+
+                                if(!mysqli_stmt_execute($selectTagsStmt)) {
+                                    echo "An error occured executing the select query.";
+                                    echo "<br /><br />-----------------<br /><br />";
+                                    die(mysqli_error($conn));
+                                }
+                            } else {
+                                die(mysqli_error($conn));
+                            }
+                            mysqli_stmt_store_result($selectTagsStmt);
+
+                            if(mysqli_stmt_num_rows($selectTagsStmt) > 0) {
+                                echo "Tag already exists in database";
+                            } else {
+                                $insertTag = "INSERT INTO tag (Genre) VALUES (?)";
+                                if($insertTagsStmt = mysqli_prepare($conn, $insertTag)) {
+                                    mysqli_stmt_bind_param($insertTagsStmt, 's', $explodedTags[$i]);
+
+                                    if(mysqli_stmt_execute($insertTagsStmt)) {
+                                        echo "Doet het.";
+                                    } else {
+                                        echo "Pestklerekankerding werkt nog niet.";
+                                    }
+                                }
+                            }
+
+                            $i++;
+                        }
                     } else {
                         echo "Video couldn't be added.";
                     }
