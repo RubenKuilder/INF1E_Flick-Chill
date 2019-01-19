@@ -162,6 +162,24 @@ $(document).ready(function() {
             }
         });
     }
+        
+    $("#dashboardContainer").on("click", ".card", function(){
+        $(".popupContent").empty();
+        $.ajax(
+            {
+                url: 'ratingGet.php',
+                type: 'GET',
+                dataType: 'text',
+                data:
+                        {
+                            'dataID': $(this).data('id')
+                        },
+                success: function (response)
+                {
+                    $('.popupContent').append(response);
+                }
+            });
+    });
 
     $("#dashboardContainer").on("click", ".card", function(){
         $(".overlayPopup").css('display','block');
