@@ -19,14 +19,12 @@ if (ini_get("session.use_cookies")) {
 // Finally, destroy the session.
 session_destroy();
 
-echo "<div style='background-color:white; padding:10px;'>";
-echo "ID-: " . $_SESSION['id'];
-echo "</div>";
+
 
 if(session_id()) {
 	echo "Something went wrong while trying to log out.";
 } else {
-	echo "You've been logged out.";
-	echo "<a href='../index.php'>Go back to the login page</a>";
+  
+    header('location:../index.php');
 }
 ?>
