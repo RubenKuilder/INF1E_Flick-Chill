@@ -177,7 +177,8 @@ require('header.php');
             <h2>Fill in your video details</h2>
             <form method="POST" action="<?php $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
                 <input type="hidden" name="size" value="1000000">
-                <input type="file" name="Thumbnail">
+                <input type="file" name="Thumbnail" id="file" class="inputfile">
+                <label for="file">Select a thumbnail</label>
                 <textarea 
                     name="Description" 
                     placeholder="Description"

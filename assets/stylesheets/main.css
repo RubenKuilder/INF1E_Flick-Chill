@@ -534,6 +534,7 @@ iframe{
 }
 
 #suggestieswrapper h2{
+    margin: 0;
     width: 100%;
     color: white;
     font-size: 0.95em;
@@ -546,6 +547,45 @@ iframe{
     margin: auto;
     margin-top: 12px;
     box-sizing: border-box;
+}
+
+#suggestieswrapper input#file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    position: relative;
+    font-weight: 700;
+    color: white;
+    background-color: #5B586E;
+    display: inline-block;
+    padding: 10px 20px;
+    padding-left: 60px;
+    margin: 15px 0 7px 0;
+    cursor: pointer;
+}
+
+.inputfile + label::before {
+    content: "";
+    background-image: url(../images/uploadFile.png);
+    width: 20px;
+    position: absolute;
+    height: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.inputfile:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
 }
 
 #suggestieswrapper textarea{
