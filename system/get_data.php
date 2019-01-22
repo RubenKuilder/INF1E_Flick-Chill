@@ -45,15 +45,44 @@ if(isset($_GET['offset']) && isset($_GET['limit'])) {
         while(mysqli_stmt_fetch($stmt)) {
             echo "
             <div class='card' style='background-image: url(assets/images/uploads/". $thumbnail .");' data-id='" . $id . "'>
-                <div class='overlay'>
-                    <div class='overlayTextContainer'>
+                <div class='overlay'>";
+                            $ratingLike = mysqli_query("SELECT COUNT(UserID) AS 'total' FROM user_likes WHERE VideoID = '" . $lastID . "' AND Rating = '1';");
+                            $dataLike = mysqli_result($ratingLike, 0);
+                            
+                            $ratingNeutral =  mysqli_query("SELECT COUNT(UserID) AS 'total' FROM user_likes WHERE VideoID = '" . $lastID . "' AND Rating = '2';");
+                            $dataNeutral = mysqli_result($ratingNeutral, 0);
+                            
+                            $ratingDislike =  mysqli_query("SELECT COUNT(UserID) AS 'total' FROM user_likes WHERE VideoID = '" . $lastID . "' AND Rating = '3';");
+                            $dataDislike = mysqli_result($ratingDislike, 0);
+                            
+                            $ratingTotal = ($dataLike['total'] + $dataNeutral['total'] + $dataDislike['total']);
+                            if($dataLike['total'] == 0){
+                                $ratingLikeP = 0;
+                            }
+                            else{                               
+                                $ratingLikeP = ($dataLike['total'] / $ratingTotal  * 100);
+                            }
+                            if($dataNeutral['total'] == 0){
+                                $ratingNeutralP = 0;                              
+                            }
+                            else{
+                                $ratingLikeP = ($dataNeutral['total'] / $ratingTotal  * 100);
+                            }
+                            if($dataDislike['total'] == 0){
+                                $ratingDislikeP = 0;
+                            }  
+                            else{
+                                $ratingLikeP = ($dataDislike['total'] / $ratingTotal  * 100);
+                            }
+                            
+                    echo "<div class='overlayTextContainer'>
                         <h2>". $title ."</h2>
                         <p>". $description ."</p>
                     </div>
-                    <div class='ratingContainer'>
-                        <span class='rateLike'></span>
-                        <span class='rateNeutral'></span>
-                        <span class='rateDislike'></span>
+                    <div class='ratingContainer'>                        
+                        <span class='rateLike' style='width:" . $ratingLikeP . "%;'></span>
+                        <span class='rateNeutral' style='width:" . $ratingNeutralP . "%;'></span>
+                        <span class='rateDislike' style='width:" . $ratingDislikeP . "%;'></span>
                     </div>
                 </div>
             </div>";

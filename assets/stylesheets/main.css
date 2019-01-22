@@ -91,21 +91,18 @@ a {
 .overlay .ratingContainer .rateLike {
     float: left;
     height: 100%;
-    width: 30%;
     background: green;
 }
 
 .overlay .ratingContainer .rateNeutral {
     float: left;
     height: 100%;
-    width: 10%;
     background: white;
 }
 
 .overlay .ratingContainer .rateDislike {
     float: left;
     height: 100%;
-    width: 60%;
     background: red;
 }
 /* DASHBOARD CSS END */
@@ -478,7 +475,7 @@ body#loginPage {
     margin: auto 10px;
     margin-top: 10px;
 }
-.popupContent p,h2{
+.popupContent p,h2,i{
     margin:10px;
     margin-top: 5px;
 }
