@@ -19,7 +19,7 @@
             mysqli_select_db($conn, "flickchill");
             $search = htmlentities($_POST['searchbar']);
             $searchArray = explode(" ", $search);
-            $searchExport = join("','",$galleries);
+            $searchExport = join("','",$searchArray);
 			// Step #3: Create the query
             $query = "SELECT Title, URL FROM video where Description IN ('$searchExport');";
            
