@@ -228,6 +228,10 @@ body#loginPage {
     font-family: 'Karla', sans-serif;
 }
 
+li.user.dropdown {
+    padding-left: 60px;
+}
+
 .menu {
     display: inline-block;
 }
@@ -319,10 +323,32 @@ body#loginPage {
     width: 2px;
     background-color: #5B586E;
 }
-
+/*
+.arrow-down{
+	content: "";
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #fb4778;
+}
+*/
 .dropdown{
     position: relative;
     display: inline-block;
+}
+
+.dropdown::before {
+	content: "";
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #fff;
+	position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .droptop{
