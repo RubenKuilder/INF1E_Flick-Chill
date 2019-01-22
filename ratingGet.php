@@ -36,7 +36,7 @@
 
         if (mysqli_stmt_num_rows($stmt) > 0) {
             while (mysqli_stmt_fetch($stmt)) {
-                echo' <iframe class="iframe" src="https://www.youtube.com/embed/' . $Url . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                echo' <div class="iframe"><iframe src="https://www.youtube.com/embed/' . $Url . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
                 //WEL DE JUISTE URL IN DATABASE HEBBEN!
 // video en user id moeten nog veranderd worden..........................
 
@@ -107,7 +107,7 @@
                 } else {
                     unset($_SESSION['vidId']);
 
-                    echo '<i>Je hebt al een rating gegeven.</i>';
+                    echo '<i>You already rated this video.</i>';
                 }
                
                 echo'<h2>' . $titel . '</h2><p>' . $descr . '</p>';

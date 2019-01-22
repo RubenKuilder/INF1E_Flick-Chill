@@ -488,8 +488,12 @@ body#loginPage {
     margin-right: 10px;
 }
 iframe{
-    width:100%;
-    height:540px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 .formRating{
     margin: 10px;
@@ -501,6 +505,14 @@ iframe{
     padding-top: 20px;
     margin: auto 11px;
     margin-bottom: 10px;
+}
+.iframe{
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+    margin-bottom: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .loginMessage {
