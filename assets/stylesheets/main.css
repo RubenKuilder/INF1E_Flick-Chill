@@ -72,6 +72,8 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
     max-height: 60px;
+    margin: 0;
+    margin-bottom: 10px;
 }
 
 .overlayTextContainer p {
@@ -228,8 +230,8 @@ body#loginPage {
     font-family: 'Karla', sans-serif;
 }
 
-li.user.dropdown {
-    padding-left: 60px;
+li.user.dropdown {      
+    padding-left: 60px;     
 }
 
 .menu {

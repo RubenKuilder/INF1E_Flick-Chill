@@ -43,53 +43,86 @@ if(isset($_GET['offset']) && isset($_GET['limit'])) {
 
     if(mysqli_stmt_num_rows($stmt) > 0) {
         while(mysqli_stmt_fetch($stmt)) {
+            $selectLikes = "SELECT COUNT(UserID) FROM user_likes WHERE VideoID = " . $id;
+            $selectNeutraal = "SELECT COUNT(UserID) FROM user_likes WHERE VideoID = " . $id . " AND Rating = 2";
+            $selectDislikes = "SELECT COUNT(UserID) FROM user_likes WHERE VideoID = " . $id . " AND Rating = 3";
+
+            // SELECT LIKES START
+            if($selectLikesStmt = mysqli_prepare($conn, $selectLikes)) {
+                if(!mysqli_stmt_execute($selectLikesStmt)) {
+                    echo "Error executing query";
+                    echo "<br />";
+                }
+            } else {
+                die(mysqli_error($conn));
+            }
+
+            mysqli_stmt_bind_result($selectLikesStmt, $likesAmount);
+            mysqli_stmt_store_result($selectLikesStmt);
+            mysqli_stmt_fetch($selectLikesStmt);
+            // SELECT LIKES END
+
+            // SELECT NEUTRAAL START
+            if($selectNeutraalStmt = mysqli_prepare($conn, $selectNeutraal)) {
+                if(!mysqli_stmt_execute($selectNeutraalStmt)) {
+                    echo "Error executing query";
+                    echo "<br />";
+                }
+            } else {
+                die(mysqli_error($conn));
+            }
+
+            mysqli_stmt_bind_result($selectNeutraalStmt, $neutraalAmount);
+            mysqli_stmt_store_result($selectNeutraalStmt);
+            mysqli_stmt_fetch($selectNeutraalStmt);
+            // SELECT NEUTRAAL END
+
+            // SELECT DISLIKE START
+            if($selectDislikeStmt = mysqli_prepare($conn, $selectDislikes)) {
+                if(!mysqli_stmt_execute($selectDislikeStmt)) {
+                    echo "Error executing query";
+                    echo "<br />";
+                }
+            } else {
+                die(mysqli_error($conn));
+            }
+
+            mysqli_stmt_bind_result($selectDislikeStmt, $dislikeAmount);
+            mysqli_stmt_store_result($selectDislikeStmt);
+            mysqli_stmt_fetch($selectDislikeStmt);
+            // SELECT DISLIKE END
+            
+            if(mysqli_stmt_num_rows($selectLikesStmt) > 0 && mysqli_stmt_num_rows($selectNeutraalStmt) > 0 && mysqli_stmt_num_rows($selectDislikeStmt) > 0) {
+                
+                $totalRating = $likesAmount + $neutraalAmount + $dislikeAmount;
+                $likes = ($likesAmount / $totalRating) * 100;
+                $neutraal = ($neutraalAmount / $totalRating) * 100;
+                $dislikes = ($dislikeAmount / $totalRating) * 100;
+                
+            } else {
+                echo "No rows found.";
+            }
+
             echo "
             <div class='card' style='background-image: url(assets/images/uploads/". $thumbnail .");' data-id='" . $id . "'>
                 <div class='overlay'>";
-                            $sql = "SELECT COUNT(UserID) AS 'total' FROM user_likes WHERE VideoID = '" . $lastID . "' AND Rating = '1';";
-                            if($stmt = $conn->prepare($sql)){
-                                // Bind variables to the prepared statement as parameters
-                                mysqli_stmt_bind_param($stmt, "s", $total['total']);
-                                 // Set parameters
-                                $ratingLike = $total;
-                               echo $total;
-                            }
-                            $dataLike = mysqli_result($ratingLike, 0);
-                            
-                            $ratingNeutral =  mysqli_query("SELECT COUNT(UserID) AS 'total' FROM user_likes WHERE VideoID = '" . $lastID . "' AND Rating = '2';");
-                            $dataNeutral = mysqli_result($ratingNeutral, 0);
-                            
-                            $ratingDislike =  mysqli_query("SELECT COUNT(UserID) AS 'total' FROM user_likes WHERE VideoID = '" . $lastID . "' AND Rating = '3';");
-                            $dataDislike = mysqli_result($ratingDislike, 0);
-                            
-                            $ratingTotal = ($dataLike['total'] + $dataNeutral['total'] + $dataDislike['total']);
-                            if($dataLike['total'] == 0){
-                                $ratingLikeP = 0;
-                            }
-                            else{                               
-                                $ratingLikeP = ($dataLike['total'] / $ratingTotal  * 100);
-                            }
-                            if($dataNeutral['total'] == 0){
-                                $ratingNeutralP = 0;                              
-                            }
-                            else{
-                                $ratingLikeP = ($dataNeutral['total'] / $ratingTotal  * 100);
-                            }
-                            if($dataDislike['total'] == 0){
-                                $ratingDislikeP = 0;
-                            }  
-                            else{
-                                $ratingLikeP = ($dataDislike['total'] / $ratingTotal  * 100);
-                            }
                             
                     echo "<div class='overlayTextContainer'>
                         <h2>". $title ."</h2>
                         <p>". $description ."</p>
                     </div>
-                    <div class='ratingContainer'>                        
-                        <span class='rateLike' style='width:" . $ratingLikeP . "%;'></span>
-                        <span class='rateNeutral' style='width:" . $ratingNeutralP . "%;'></span>
-                        <span class='rateDislike' style='width:" . $ratingDislikeP . "%;'></span>
+                    <div class='ratingContainer'>
+                        ";
+                        if ($likes != 0 || $neutraal != 0 || $dislikes != 0) {
+                            echo "
+                            <span class='rateLike' style='width:" . $likes . "%;'></span>
+                            <span class='rateNeutral style='width:" . $neutraal . "%;'></span>
+                            <span class='rateDislike style='width:" . $dislike . "%;'></span>";
+                        }
+                        echo "
+                        <span class='rateLike'></span>
+                        <span class='rateNeutral'></span>
+                        <span class='rateDislike'></span>
                     </div>
                 </div>
             </div>";
