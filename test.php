@@ -20,6 +20,7 @@ if ($_SESSION['id'] == "") {
 		echo "<h2>Logged in as:</h2>";
 		echo $_SESSION['name'];
 		echo "<br />";
+		echo "rol is: " . $_SESSION['rol'];
 		?>
 		<a href="system/logout.php">Log-out</a>
 	</body>

@@ -17,7 +17,7 @@ if ($_SESSION['id'] == "") {
 
        include ("header.php");
        include ("system/config.php");
-       // if (isset($_SESSION['rol'] = "2" Or "3")){
+        if ($_SESSION['rol'] == "2" || $_SESSION['rol'] == "3"){
 
 
             if (!mysqli_select_db($conn, "flicknchill")) {
@@ -64,7 +64,9 @@ if ($_SESSION['id'] == "") {
                
             }
             mysqli_close($conn);
-      //  }
+        } else {
+            echo "you must be an admin or moderator to visit this page";
+        }
         ?>
     </body>
 </html>
