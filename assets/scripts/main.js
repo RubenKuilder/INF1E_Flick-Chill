@@ -192,4 +192,12 @@ $(document).ready(function() {
     $(".closeLoginMessage").click(function() {
         $(".loginMessage").remove();
     });
+
+    $(".inputfile").change(function() {
+        var label = $(this).next();
+        var fileName = '';
+
+        fileName = $(this).val().split( '\\' ).pop();
+        label.html(fileName);
+    });
 });
