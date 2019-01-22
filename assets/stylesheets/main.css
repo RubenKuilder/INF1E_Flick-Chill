@@ -462,6 +462,7 @@ body#loginPage {
 .popupContent {
     width: calc(100% - 40px);
     max-width: 960px;
+    
     background: linear-gradient(#48455D, #333142);
     background-size: cover;
     background-position: center;
@@ -476,6 +477,25 @@ body#loginPage {
     border-radius: 10px;
     margin: auto 10px;
     margin-top: 10px;
+}
+.popupContent p,h2{
+    margin:10px;
+    margin-top: 5px;
+}
+.popupContent h2{
+    margin-bottom: 5px;
+}
+.popupContent form{
+    margin-left: 10px;
+    margin-top: 3px;
+    margin-right: 10px;
+}
+iframe{
+    width:100%;
+    height:540px;
+}
+.formRating{
+    margin: 10px;
 }
 .discription{
     margin: 11px;

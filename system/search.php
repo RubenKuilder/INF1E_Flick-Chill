@@ -21,7 +21,7 @@
             $searchArray = explode(" ", $search);
             $searchExport = join("','",$galleries);
 			// Step #3: Create the query
-            $query = "SELECT Title, URL FROM video where Description like '%$searchExport%';";
+            $query = "SELECT Title, URL FROM video where Description IN ('$searchExport');";
            
 
             // Step #4: Prepare query as a statement
