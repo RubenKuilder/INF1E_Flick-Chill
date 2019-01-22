@@ -38,18 +38,27 @@ require('header.php');
             }
             // Check if file already exists
             if (file_exists($target_file)) {
-                echo "File already exists.";
+                echo "<div class='loginMessage'>
+                        A file with the same name already exists.
+                        <span class='closeLoginMessage'>Close</span>
+                    </div>";
                 $uploadOk = 0;
             }
             // Check file size
             if ($_FILES["Thumbnail"]["size"] > 500000) {
-                echo "Your file is too large.";
+                echo "<div class='loginMessage'>
+                        Your file is too large.
+                        <span class='closeLoginMessage'>Close</span>
+                    </div>";
                 $uploadOk = 0;
             }
             // Allow certain file formats
             if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
-                echo "Only JPG, JPEG, PNG & GIF files are allowed.";
+                echo "<div class='loginMessage'>
+                        Only JPG, JPEG, PNG & GIF files are allowed.
+                        <span class='closeLoginMessage'>Close</span>
+                    </div>";
                 $uploadOk = 0;
             }
 
@@ -60,7 +69,13 @@ require('header.php');
 
                 if($uploadOk != 0) {
                     if (mysqli_stmt_execute($stmt) && move_uploaded_file($_FILES["Thumbnail"]["tmp_name"], $target_file)) {
-                        echo "Video suggestion added to database.";
+                        $videoInsertID = mysqli_insert_id($conn);
+                        // Video suggestion succesfully added to video table.
+
+                        // echo "<br />-----<br />";
+                        // echo "Video suggestion succesfully added to video table.";
+                        // echo "<br />-----<br />";
+                        // echo $videoInsertID;
 
                         $selectTags = "SELECT * FROM tag WHERE Genre = ?";
                             
@@ -70,8 +85,11 @@ require('header.php');
                                 mysqli_stmt_bind_param($selectTagsStmt, 's', $explodedTags[$i]);
 
                                 if(!mysqli_stmt_execute($selectTagsStmt)) {
-                                    echo "An error occured executing the select query.";
-                                    echo "<br /><br />-----------------<br /><br />";
+                                    // An error occured executing the select tag query.
+
+                                    // echo "<br />-----<br />";
+                                    // echo "An error occured executing the select tag query.";
+                                    // echo "<br />-----<br />";
                                     die(mysqli_error($conn));
                                 }
                             } else {
@@ -80,32 +98,79 @@ require('header.php');
                             mysqli_stmt_store_result($selectTagsStmt);
 
                             if(mysqli_stmt_num_rows($selectTagsStmt) > 0) {
-                                echo "Tag already exists in database";
+                                // Tag already exists in database.
+                                // echo "Tag already exists in database";
                             } else {
                                 $insertTag = "INSERT INTO tag (Genre) VALUES (?)";
                                 if($insertTagsStmt = mysqli_prepare($conn, $insertTag)) {
                                     mysqli_stmt_bind_param($insertTagsStmt, 's', $explodedTags[$i]);
 
                                     if(mysqli_stmt_execute($insertTagsStmt)) {
-                                        echo "Doet het.";
+                                        $tagInsertID = mysqli_insert_id($conn);
+                                        // Succesfully inserted " . $explodedTags[$i] . " into tag table.
+
+                                        // echo "<br />-----<br />";
+                                        // echo "Succesfully inserted " . $explodedTags[$i] . " into tag table.";
+                                        // echo "<br />-----<br />";
+                                        // echo $tagInsertID;
+
+                                        $insertVideoTag = "INSERT INTO video_tag (tagID, videoID) VALUES (?, ?)";
+                                        if($insertVideoTagStmt = mysqli_prepare($conn, $insertVideoTag)) {
+                                            mysqli_stmt_bind_param($insertVideoTagStmt, 'ii', $tagInsertID, $videoInsertID);
+                                            if(mysqli_stmt_execute($insertVideoTagStmt)) {
+                                                echo "<div class='loginMessage'>
+                                                        Video suggested. Our staff will review your suggestion before it'll be live.
+                                                        <span class='closeLoginMessage'>Close</span>
+                                                    </div>";
+
+                                                // Inserted " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.
+
+                                                // echo "<br />-----<br />";
+                                                // echo "Inserted " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.";
+                                                // echo "<br />-----<br />";
+                                            } else {
+                                                // Something went wrong trying to insert " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.
+
+                                                // echo "<br />-----<br />";
+                                                // echo "Something went wrong trying to insert " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.";
+                                                // echo "<br />-----<br />";
+                                            }
+                                            mysqli_stmt_close($insertVideoTagStmt);
+                                        }
                                     } else {
-                                        echo "Pestklerekankerding werkt nog niet.";
+                                        // Something went wrong trying to insert " . $explodedTags . " into tag table.
+
+                                        // echo "<br />-----<br />";
+                                        // echo "Something went wrong trying to insert " . $explodedTags . " into tag table.";
+                                        // echo "<br />-----<br />";
                                     }
+                                    mysqli_stmt_close($insertTagsStmt);
                                 }
                             }
 
                             $i++;
                         }
                     } else {
-                        echo "Video couldn't be added.";
+                        // Something went wrong while trying to insert the video into the video table.
+
+                        // echo "<br />-----<br />";
+                        // echo "Something went wrong while trying to insert the video into the video table.";
+                        // echo "<br />-----<br />";
                     }
                 } else {
-                    echo "Your file was not uploaded.";
+                    //Something went wrong while trying to insert the image into the video table.
+
+                    // echo "<br /><br />";
+                    // echo "Something went wrong while trying to insert the image into the video table.";
+                    // echo "<br /><br />";
                 }
             } else {
                 die(mysqli_error($conn));
             }
+            mysqli_stmt_close($stmt);
         }
+
+        mysqli_close($conn);
 
         ?>
         <div id="suggestieswrapper">
