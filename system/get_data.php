@@ -46,7 +46,14 @@ if(isset($_GET['offset']) && isset($_GET['limit'])) {
             echo "
             <div class='card' style='background-image: url(assets/images/uploads/". $thumbnail .");' data-id='" . $id . "'>
                 <div class='overlay'>";
-                            $ratingLike = mysqli_query("SELECT COUNT(UserID) AS 'total' FROM user_likes WHERE VideoID = '" . $lastID . "' AND Rating = '1';");
+                            $sql = "SELECT COUNT(UserID) AS 'total' FROM user_likes WHERE VideoID = '" . $lastID . "' AND Rating = '1';";
+                            if($stmt = $conn->prepare($sql)){
+                                // Bind variables to the prepared statement as parameters
+                                mysqli_stmt_bind_param($stmt, "s", $total['total']);
+                                 // Set parameters
+                                $ratingLike = $total;
+                               echo $total;
+                            }
                             $dataLike = mysqli_result($ratingLike, 0);
                             
                             $ratingNeutral =  mysqli_query("SELECT COUNT(UserID) AS 'total' FROM user_likes WHERE VideoID = '" . $lastID . "' AND Rating = '2';");
