@@ -30,10 +30,13 @@
                         <div class="bar"></div>
                     </li>
                     <div class="navBtns">
-                        <li><a href="dashboard.php">Home</a></li>
-                        <li><a href="?search=test" class="test">Test</a></li>
-                        <li><a href="?search=free" class="free">Free</a></li>
+                    <li><a href="dashboard.php">Home</a></li>
+                        <li><a href="?search=vlog" class="vlog">Vlog</a></li>
+                        <li><a href="?search=review" class="review">Review</a></li>
                         <li><a href="?search=tech" class="tech">Tech</a></li>
+                        <li><a href="?search=unboxing" class="unboxing">Unboxing</a></li>
+                        <li><a href="?search=tutorial" class="tutorial">Tutorial</a></li>
+                        <li><a href="?search=news" class="news">News</a></li>
                     </div>
                     <img class="logo" src="assets/images/logo_header.png" alt='Logo'>
                 </div>
@@ -103,9 +106,12 @@
                 <div class="navBtnsMobile">
                     <ul>
                         <li><a href="dashboard.php">Home</a></li>
-                        <li><a href="?search=test" class="test">Test</a></li>
-                        <li><a href="?search=free" class="free">Free</a></li>
+                        <li><a href="?search=vlog" class="vlog">Vlog</a></li>
+                        <li><a href="?search=review" class="review">Review</a></li>
                         <li><a href="?search=tech" class="tech">Tech</a></li>
+                        <li><a href="?search=unboxing" class="unboxing">Unboxing</a></li>
+                        <li><a href="?search=tutorial" class="tutorial">Tutorial</a></li>
+                        <li><a href="?search=news" class="news">News</a></li>
                     </ul>
                     <form action="dashboard.php" method="get">
                         <input class="searchbar" type="text" name="search" placeholder="Search...">
