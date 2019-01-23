@@ -438,13 +438,13 @@ li.user.dropdown {
 
 /* FOOTER CSS START */
 .footer{
-    background-color: #48455D;
+    background-color: #333143;
     width: 100%;
     box-shadow: 0px -3px 6px rgba(0,0,0,0.16);
     margin-top: 30px;
     height: 38px;
     font-size: 0.6em;
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
 }
