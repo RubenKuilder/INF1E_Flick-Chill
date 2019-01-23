@@ -75,7 +75,8 @@ if (isset($_POST['update'])){
                         . mysqli_error($conn)
                         . "</p>";
                     } else {
-                        header("location:adminoverview.php");
+                        echo "<b>Delete succesfull</b><br>";
+                        echo "<a href='adminoverview.php'>Click here to go back</a>";
                     } 
             }
         }
@@ -111,7 +112,8 @@ if (isset($_POST['update'])){
                     . mysqli_error($conn)
                     . "</p>";
                 } else {
-                    header("location: adminoverview.php");
+                    echo "<b>Update succesfull</b><br>";
+                    echo "<a href='adminoverview.php'>Click here to go back</a>";
                 }
             } 
 //Clean up the $stmt after use
