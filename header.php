@@ -111,6 +111,12 @@
                         <li><a href="?search=unboxing" class="unboxing">Unboxing</a></li>
                         <li><a href="?search=tutorial" class="tutorial">Tutorial</a></li>
                         <li><a href="?search=news" class="news">News</a></li>
+                        <?php
+                        if($_SESSION['rol'] > 2){
+                            echo '<li><a class="suggestions" href="suggestiesv3.php">Suggestions</a></li>';
+                        }
+                        ?>
+                        <li><a class="logout" href="system/logout.php">Log Out</a></li>
                     </ul>
                     <form action="dashboard.php" method="get">
                         <input class="searchbar" type="text" name="search" placeholder="Search...">
