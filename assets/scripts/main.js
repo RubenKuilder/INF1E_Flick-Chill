@@ -7,7 +7,7 @@ $(document).ready(function() {
     $('.navBtnsMobile').css('height', '0');
 
     function updateDesktopNav(){
-        var desktopNavFullWidth = desktopNavBtnsWidth + 600;
+        var desktopNavFullWidth = desktopNavBtnsWidth + 600 + 70;
 
         if($(window).width() < desktopNavFullWidth) {
             $('.header.desktop').css('display','none');
@@ -113,9 +113,11 @@ $(document).ready(function() {
             }
         });
     } else {
-    	if($(".header li:first-child a." + search) == true) {
-			$(".header li a."+search).addClass("active");
-		}
+    	//if($(".header li:first-child a." + search) == true) {
+			//$(".header li a."+search).addClass("active");
+		//}
+		
+		$(".header li a."+search).addClass("active");
 
         $.ajax(
         {

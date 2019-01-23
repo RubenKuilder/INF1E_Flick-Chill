@@ -397,6 +397,10 @@ li.user.dropdown {
   }
   
 /* MOBILE HEADER START*/
+.header.mobile {
+	z-index: 9999999;
+}
+
 .header.mobile ul {
     padding: 8px 20px;
 }
