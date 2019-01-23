@@ -11,7 +11,7 @@ include ("system/config.php");
     if (isset($_GET['id'])){
         
        if (!mysqli_select_db($conn, $databasename)) {
-           echo "<p ALIGN=CENTER>There are no video's to view</p>";
+           echo "<p>There are no video's to view</p>";
        } else {
            
            $vId = $_GET['id'];

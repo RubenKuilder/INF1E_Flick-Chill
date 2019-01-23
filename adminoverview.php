@@ -4,19 +4,12 @@ if ($_SESSION['id'] == "") {
     header('location:index.php');
     exit();
 }
+include("system/config.php");
+include('header.php')
 ?>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Admin overview</title>
-        
-    </head>
-    <body>
-
-        <?php
-
-       include ("header.php");
-       include ("system/config.php");
+  
+<?php
+       
         if ($_SESSION['rol'] == "2" || $_SESSION['rol'] == "3"){
 
 
