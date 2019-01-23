@@ -40,7 +40,8 @@ a {
 
 .card {
     height: 10vw;
-    background-color: red;
+    background-image: url(../images/imagePlaceholder.jpg);
+    background-color: #fff;
     background-size: cover;
     background-position: center;
 }
