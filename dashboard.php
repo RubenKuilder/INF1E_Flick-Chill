@@ -6,7 +6,6 @@ if ($_SESSION['id'] <= "1") {
     exit();
 }
 ?>
-<!DOCTYPE html>
 <?php
 require('system/config.php');
 require('header.php');
@@ -23,10 +22,6 @@ require('header.php');
     </div>
 </div>
 
-</body>
 <?php
 require('footer.php')
 ?>
-    </body>
-
-</html>
