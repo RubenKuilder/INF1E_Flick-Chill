@@ -23,7 +23,7 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
                     $end = $end . " OR v.Description LIKE '%$z%' OR t.Genre LIKE '$z'";
                 }
             }
-            $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE  v.Description LIKE '%$search%' " . $end . " GROUP BY v.VideoID";
+            $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE  v.Description LIKE '%$search%'" . $end . " GROUP BY v.VideoID";
         } else {
             $selectQuery = "SELECT * FROM " . $tableName . " WHERE VideoID > " . $lastID . " ORDER BY VideoID DESC";
         }
@@ -37,7 +37,7 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
                     $end = $end . " OR v.Description LIKE '%$z%' OR t.Genre LIKE '$z'";
                 }
             }
-            $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE  v.Description LIKE '%$search%' " . $end . " GROUP BY v.VideoID";
+            $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE  v.Description LIKE '%$search%'" . $end . " GROUP BY v.VideoID";
         } else {
             $selectQuery = "SELECT * FROM " . $tableName . " ORDER BY VideoID DESC";
         }
