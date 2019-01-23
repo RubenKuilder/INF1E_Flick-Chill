@@ -142,7 +142,7 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
             </div>";
         }
     } else {
-        echo 'geen resultaten.';
+        echo 'no results.';
     }
 }
 ?>
