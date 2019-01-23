@@ -46,7 +46,7 @@
                 if (isset($_SESSION["videoIdRate"])) {
                     $videoid = $_SESSION["videoIdRate"];
                 }
-                if ($stmt = mysqli_prepare($conn, "SELECT Count(Rating) FROM user_likes WHERE UserID = " . $userid . " AND VideoID = " . $_SESSION['vidId']) . ";") {
+                if ($stmt = mysqli_prepare($conn, "SELECT Count(Rating) FROM user_likes WHERE UserID = " . $userid . " AND VideoID = " . $_SESSION['vidId'] . ";")) {
                     if (!mysqli_stmt_execute($stmt)) {
                         echo "Error executing query";
                         die(mysqli_error($conn));
@@ -67,14 +67,7 @@
                             <input type="submit" name="goed" class="goed" value="">
                             <input type="submit" name="neutraal" class="neutraal" value="">
                             <input type="submit" name="slecht" class="slecht" value="">
-
-
                         </form> 
-
-
-
-
-
                         <?php
                         $rating = 0;
 
