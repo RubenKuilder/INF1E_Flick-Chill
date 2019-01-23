@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['id'] == "") {
+if ($_SESSION['id'] <= "1") {
     header('location:index.php');
     exit();
 }

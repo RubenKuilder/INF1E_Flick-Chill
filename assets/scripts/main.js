@@ -187,6 +187,7 @@ $(document).ready(function() {
 
     $(".overlayBackground").click(function() {
         $(".overlayPopup").css('display','none');
+        $(".popupContent").empty();
     });
 
     $(".closeLoginMessage").click(function() {

@@ -18,6 +18,14 @@ require('system/config.php');
         <link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css">
         <script type='text/javascript' src='assets/scripts/jquery.js'></script>
         <script type='text/javascript' src='assets/scripts/main.js'></script>
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#46435b">
+		<meta name="theme-color" content="#ffffff">
+		<link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
     </head>
     <body id="loginPage">
         <?php
@@ -84,7 +92,7 @@ require('system/config.php');
             </div>
             <div id="loginForm">
                 <p>
-                    Log hier in met je schoolgegevens:
+                    Log here in with your school data:
                 </p>
                 <form action="index.php" method="post">
                     <input type="email" name="email" placeholder="Email..."><br/>
