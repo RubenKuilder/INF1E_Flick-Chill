@@ -28,7 +28,7 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
         }
     } else {
         if (isset($_GET['search'])) {
-            //database moet correct gevuld zijn om te laten werken(tabel video_tag moet de juiste dingen bevatten)
+            //database moet correct gevuld zijn om te laten werken(tabel video_tag moet de juiste dingen bevatten.)
             $searching = explode('%', $search);
             if (count($searching) > 0) {
                 $end = '';
