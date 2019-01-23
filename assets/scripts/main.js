@@ -113,9 +113,7 @@ $(document).ready(function() {
             }
         });
     } else {
-    	if($(".header li:first-child a." + search) == false) {
-			alert("dafuckk");
-		} else {
+    	if($(".header li:first-child a." + search) == true) {
 			$(".header li a."+search).addClass("active");
 		}
 

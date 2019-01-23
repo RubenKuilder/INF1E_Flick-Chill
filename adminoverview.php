@@ -20,7 +20,7 @@ if ($_SESSION['id'] == "") {
         if ($_SESSION['rol'] == "2" || $_SESSION['rol'] == "3"){
 
 
-            if (!mysqli_select_db($conn, "flicknchill")) {
+            if (!mysqli_select_db($conn, $databasename)) {
                 echo "<p>There are no video's suggested</p>";
             } else {
                

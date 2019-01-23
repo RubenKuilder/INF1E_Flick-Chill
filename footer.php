@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>  
         <div class="footer">
             <div class="left">
                 <p><i>&#169; NHLStenden, 2018-2019.</i></p>
