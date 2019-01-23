@@ -112,7 +112,7 @@ a {
 
 /* LOGIN CSS */
 body#loginPage {
-    background-image: url("../images/loginBG.jpg");
+    background-image: linear-gradient(#48455D, #333142);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
