@@ -20,26 +20,25 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
             if (count($searching) > 0) {
                 $end = '';
                 foreach ($searching as $a => $z) {
-                    $end = $end . " OR v.Description LIKE '%$z%' OR t.Genre LIKE '$z'";
+                    $end = $end . " OR v.Description LIKE '%$z%' OR t.Genre = '$z'";
                 }
-            }
-            $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE isLive=1 AND v.Description LIKE '%$search%'" . $end . " GROUP BY v.VideoID";
+            }$selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE (v.Description LIKE '%$search%'" . $end . ") AND v.isLive = 1 GROUP BY v.VideoID";
         } else {
             $selectQuery = "SELECT * FROM " . $tableName . " WHERE isLive=1 AND VideoID > " . $lastID . " ORDER BY VideoID DESC";
         }
     } else {
         if (isset($_GET['search'])) {
-            //database moet correct gevuld zijn om te laten werken(tabel video_tag moet de juiste dingen bevatten)
+            //database moet correct gevuld zijn om te laten werken(tabel video_tag moet de juiste dingen bevatten.)
             $searching = explode('%', $search);
             if (count($searching) > 0) {
                 $end = '';
                 foreach ($searching as $a => $z) {
-                    $end = $end . " OR v.Description LIKE '%$z%' OR t.Genre LIKE '$z'";
+                    $end = $end . " OR v.Description LIKE '%$z%' OR t.Genre = '$z'";
                 }
             }
-            $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE isLive=1 AND v.Description LIKE '%$search%'" . $end . " GROUP BY v.VideoID";
+            $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE (v.Description LIKE '%$search%'" . $end . ") AND v.isLive = 1 GROUP BY v.VideoID;";
         } else {
-            $selectQuery = "SELECT * FROM " . $tableName . " WHERE isLive=1 ORDER BY VideoID ASC";
+            $selectQuery = "SELECT * FROM " . $tableName . " WHERE isLive=1 ORDER BY VideoID DESC;";
         }
     }
 
@@ -141,6 +140,8 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
                 </div>
             </div>";
         }
+    } else {
+        echo 'no results.';
     }
 }
 ?>
