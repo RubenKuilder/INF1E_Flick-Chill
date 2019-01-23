@@ -9,8 +9,8 @@ include ("header.php");
 include ("system/config.php");
 
     if (isset($_GET['id'])){
-        $DBName = "flicknchill";
-       if (!mysqli_select_db($conn, $DBName)) {
+        
+       if (!mysqli_select_db($conn, $databasename)) {
            echo "<p ALIGN=CENTER>There are no video's to view</p>";
        } else {
            
