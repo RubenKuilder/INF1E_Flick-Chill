@@ -111,9 +111,10 @@
                         <li><a href="?search=unboxing" class="unboxing">Unboxing</a></li>
                         <li><a href="?search=tutorial" class="tutorial">Tutorial</a></li>
                         <li><a href="?search=news" class="news">News</a></li>
+                        <li><a href="suggestionsv3.php" class="sugesstions">Sugesstions</a></li>
                         <?php
-                        if($_SESSION['rol'] > 2){
-                            echo '<li><a class="suggestions" href="suggestiesv3.php">Suggestions</a></li>';
+                        if($_SESSION['rol'] > 1){
+                            echo '<li><a class="admin" href="adminoverview.php">Admin Page</a></li>';
                         }
                         ?>
                         <li><a class="logout" href="system/logout.php">Log Out</a></li>
