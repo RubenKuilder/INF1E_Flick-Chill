@@ -116,13 +116,13 @@
                 } else {
 
                     if ($rate == 1) {
-                        echo "<i>You rated this video 'good'</i> <input type='submit' name='goed' class='goed' value=''>";
+                        echo "<div class='ratingConfirm'><i>You rated this video 'good'</i> <input type='submit' name='goed' class='goed' value=''></div>";
                     } else if ($rate == 2) {
-                        echo "<i>You rated this video 'neutral'</i><input type='submit' name='goed' class='neutraal' value=''>";
+                        echo "<div class='ratingConfirm'><i>You rated this video 'neutral'</i><input type='submit' name='goed' class='neutraal' value=''></div>";
                     } else if ($rate == 3) {
-                        echo "<i>You rated this video 'bad'</i><input type='submit' name='goed' class='slecht' value=''>";
+                        echo "<div class='ratingConfirm'><i>You rated this video 'bad'</i><input type='submit' name='goed' class='slecht' value=''></div>";
                     } else {
-                        echo '<i>You already rated this video</i>';
+                        echo "<div class='ratingConfirm'><i>You already rated this video</i></div>";
                     }
                     unset($_SESSION['vidId']);
                 }         
