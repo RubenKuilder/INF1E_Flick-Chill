@@ -12,7 +12,10 @@ body {
     height:100%;
 	position: relative;
 }
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 ul {
     list-style: none;
 }
@@ -21,6 +24,24 @@ a {
     text-decoration: none;
     color: #fff;
 }
+/* width */
+::-webkit-scrollbar {
+  width: 11px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #333142 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FB4778; 
+  border-radius: 5px;
+}
+
+
+
 
 /* DASHBOARD CSS START */
 
@@ -495,8 +516,7 @@ li.user.dropdown {
 
 .popupContent {
     width: calc(100% - 40px);
-    max-width: 1200px;
-    
+    max-width: 960px;
     background: linear-gradient(#48455D, #333142);
     background-size: cover;
     background-position: center;
