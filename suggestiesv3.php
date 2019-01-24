@@ -92,29 +92,35 @@ require('header.php');
                             } else {
                                 die(mysqli_error($conn));
                             }
+                            mysqli_stmt_bind_result($selectTagsStmt, $selectedTagID, $genreTag);
                             mysqli_stmt_store_result($selectTagsStmt);
+                            mysqli_stmt_fetch($selectTagsStmt);
 
                             if(mysqli_stmt_num_rows($selectTagsStmt) > 0) {
+                                echo "Tag already in database. Tagid and videoid will be added into the video_tag table.";
+
+
+
                                 $insertVideoTag = "INSERT INTO video_tag (tagID, videoID) VALUES (?, ?)";
                                 if($insertVideoTagStmt = mysqli_prepare($conn, $insertVideoTag)) {
-                                    mysqli_stmt_bind_param($insertVideoTagStmt, 'ii', $tagInsertID, $videoInsertID);
+                                    mysqli_stmt_bind_param($insertVideoTagStmt, 'ii', $selectedTagID, $videoInsertID);
                                     if(mysqli_stmt_execute($insertVideoTagStmt)) {
                                         echo "<div class='loginMessage'>
                                                 Video suggested. Our staff will review your suggestion before it'll be live.
                                                 <span class='closeLoginMessage'>Close</span>
                                             </div>";
 
-                                        // Inserted " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.
+                                        // Inserted " . $TagID . " and " . $videoInsertID . " into video_tag table.
 
-                                        // echo "<br />-----<br />";
-                                        // echo "Inserted " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.";
-                                        // echo "<br />-----<br />";
+                                        echo "<br />-----<br />";
+                                        echo "Inserted " . $selectedTagID . " and " . $videoInsertID . " into video_tag table.";
+                                        echo "<br />-----<br />";
                                     } else {
-                                        // Something went wrong trying to insert " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.
+                                        // Something went wrong trying to insert " . $TagID . " and " . $videoInsertID . " into video_tag table.
 
-                                        // echo "<br />-----<br />";
-                                        // echo "Something went wrong trying to insert " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.";
-                                        // echo "<br />-----<br />";
+                                        echo "<br />-----<br />";
+                                        echo "Something went wrong trying to insert " . $selectedTagID . " and " . $videoInsertID . " into video_tag table.";
+                                        echo "<br />-----<br />";
                                     }
                                     mysqli_stmt_close($insertVideoTagStmt);
                                 }
@@ -127,10 +133,10 @@ require('header.php');
                                         $tagInsertID = mysqli_insert_id($conn);
                                         // Succesfully inserted " . $explodedTags[$i] . " into tag table.
 
-                                        // echo "<br />-----<br />";
-                                        // echo "Succesfully inserted " . $explodedTags[$i] . " into tag table.";
-                                        // echo "<br />-----<br />";
-                                        // echo $tagInsertID;
+                                        echo "<br />-----<br />";
+                                        echo "Succesfully inserted " . $explodedTags[$i] . " into tag table.";
+                                        echo "<br />-----<br />";
+                                        echo $tagInsertID;
 
                                         $insertVideoTag = "INSERT INTO video_tag (tagID, videoID) VALUES (?, ?)";
                                         if($insertVideoTagStmt = mysqli_prepare($conn, $insertVideoTag)) {
@@ -143,24 +149,24 @@ require('header.php');
 
                                                 // Inserted " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.
 
-                                                // echo "<br />-----<br />";
-                                                // echo "Inserted " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.";
-                                                // echo "<br />-----<br />";
+                                                echo "<br />-----<br />";
+                                                echo "Inserted " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.";
+                                                echo "<br />-----<br />";
                                             } else {
                                                 // Something went wrong trying to insert " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.
 
-                                                // echo "<br />-----<br />";
-                                                // echo "Something went wrong trying to insert " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.";
-                                                // echo "<br />-----<br />";
+                                                echo "<br />-----<br />";
+                                                echo "Something went wrong trying to insert " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.";
+                                                echo "<br />-----<br />";
                                             }
                                             mysqli_stmt_close($insertVideoTagStmt);
                                         }
                                     } else {
                                         // Something went wrong trying to insert " . $explodedTags . " into tag table.
 
-                                        // echo "<br />-----<br />";
-                                        // echo "Something went wrong trying to insert " . $explodedTags . " into tag table.";
-                                        // echo "<br />-----<br />";
+                                        echo "<br />-----<br />";
+                                        echo "Something went wrong trying to insert " . $explodedTags . " into tag table.";
+                                        echo "<br />-----<br />";
                                     }
                                     mysqli_stmt_close($insertTagsStmt);
                                 }
@@ -171,16 +177,16 @@ require('header.php');
                     } else {
                         // Something went wrong while trying to insert the video into the video table.
 
-                        // echo "<br />-----<br />";
-                        // echo "Something went wrong while trying to insert the video into the video table.";
-                        // echo "<br />-----<br />";
+                        echo "<br />-----<br />";
+                        echo "Something went wrong while trying to insert the video into the video table.";
+                        echo "<br />-----<br />";
                     }
                 } else {
                     //Something went wrong while trying to insert the image into the video table.
 
-                    // echo "<br /><br />";
-                    // echo "Something went wrong while trying to insert the image into the video table.";
-                    // echo "<br /><br />";
+                    echo "<br /><br />";
+                    echo "Something went wrong while trying to insert the image into the video table.";
+                    echo "<br /><br />";
                 }
             } else {
                 die(mysqli_error($conn));
