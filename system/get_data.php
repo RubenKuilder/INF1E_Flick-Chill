@@ -41,7 +41,6 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
             $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE (v.Description LIKE '%$search%'" . $end . ") AND v.isLive = 1 GROUP BY v.VideoID";
         } else {
             $selectQuery = "SELECT * FROM " . $tableName . " WHERE isLive=1 ORDER BY VideoID DESC LIMIT " . $limit;
-
         }
     }
 
@@ -109,15 +108,19 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
             mysqli_stmt_fetch($selectDislikeStmt);
             // SELECT DISLIKE END
 
-            if (mysqli_stmt_num_rows($selectLikesStmt) > 0 && mysqli_stmt_num_rows($selectNeutraalStmt) > 0 && mysqli_stmt_num_rows($selectDislikeStmt) > 0) {
 
-                $totalRating = $likesAmount + $neutraalAmount + $dislikeAmount;
+
+            $totalRating = $likesAmount + $neutraalAmount + $dislikeAmount;
+            if ($totalRating != 0) {
                 $likes = ($likesAmount / $totalRating) * 100;
                 $neutraal = ($neutraalAmount / $totalRating) * 100;
                 $dislikes = ($dislikeAmount / $totalRating) * 100;
             } else {
-                echo "No rows found.";
+                $likes = 0;
+                $neutraal = 0;
+                $dislikes = 0;
             }
+
 
             echo "
             <div class='card' style='background-image: url(assets/images/uploads/" . $thumbnail . ");' data-id='" . $id . "'>

@@ -80,7 +80,7 @@
                 if ($countR == 0) {
                     ?> <div>
                         <form action="ratingGet.php" method="post"> 
-                            <input type="submit" name="goed" class="goed" value="">
+                            <i>Rating:</i><input type="submit" name="goed" class="goed" value="">
                             <input type="submit" name="neutraal" class="neutraal" value="">
                             <input type="submit" name="slecht" class="slecht" value="">
                         </form> 
