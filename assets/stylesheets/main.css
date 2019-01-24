@@ -543,7 +543,6 @@ li.user.dropdown {
 .popupContent h2{
     margin-bottom: 5px;
 }
-
 .popupContent form{
     margin-left: 10px;
     float: right;
@@ -687,6 +686,9 @@ iframe{
     height: 100px;
     overflow-y:scroll;
     word-wrap: break-word;
+}
+textarea::-webkit-scrollbar-track{
+    background-color: #ffffff;
 }
 /* SUGGESTIONS PAGE END */
 

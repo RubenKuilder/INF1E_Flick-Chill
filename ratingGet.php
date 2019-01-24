@@ -80,7 +80,7 @@
                 if ($countR == 0) {
                     ?> <div>
                         <form action="ratingGet.php" method="post"> 
-                            <input type="submit" name="goed" class="goed" value="">
+                            <i>Rating:</i><input type="submit" name="goed" class="goed" value="">
                             <input type="submit" name="neutraal" class="neutraal" value="">
                             <input type="submit" name="slecht" class="slecht" value="">
                         </form> 
@@ -103,7 +103,7 @@
                         if ($stmt = mysqli_prepare($conn, $query)) {
                             if (mysqli_stmt_execute($stmt)) {
                                 unset($_SESSION['vidId']);
-                                header('Location: Dashboard.php');
+                                header('Location: dashboard.php');
                             } else {
                                 echo "Error executing query";
                                 die(mysqli_error($conn));
