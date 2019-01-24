@@ -46,8 +46,8 @@
                             FROM tag
                             JOIN video_tag ON video_tag.TagID= tag.TagID
                             WHERE videoID='" . $_SESSION['vidId'] . "';" ;
-                            if ($stmt = mysqli_prepare($conn, $sqlTag)) {
-                                if (!mysqli_stmt_execute($stmt)) {
+                            if ($stmt2 = mysqli_prepare($conn, $sqlTag)) {
+                                if (!mysqli_stmt_execute($stmt2)) {
                                     echo "Error executing query";
                                     echo "<br /><br />--------------<br /><br />";
                                     die(mysqli_error($conn));
@@ -56,8 +56,8 @@
                         else {
                             die(mysqli_error($conn));
                         }
-                   mysqli_stmt_bind_result($stmt, $tags);
-                   mysqli_stmt_store_result($stmt);
+                   mysqli_stmt_bind_result($stmt2, $tags);
+                   mysqli_stmt_store_result($stmt2);
 
                 if (isset($_SESSION["videoIdRate"])) {
                     $videoid = $_SESSION["videoIdRate"];
@@ -119,7 +119,15 @@
                     echo '<i>You already rated this video.</i>';
                 }
                
-                echo'<h2>' . $titel . '</h2><i>' . $tags . '</i><p>' . $descr . '</p>';
+                echo'<h2>' . $titel . '</h2>';
+                echo '<p>' . $descr . '</p>';
+                if(mysqli_stmt_num_rows($stmt2) > 0){
+                    echo "<i>Tags: ";
+                    while(mysqli_stmt_fetch($stmt2)){
+                        echo  $tags . " ";
+                    }
+                    echo "</i><p></p>";
+                }
             }
         }
         ?>
