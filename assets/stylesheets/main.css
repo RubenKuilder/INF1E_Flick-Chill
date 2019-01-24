@@ -516,7 +516,7 @@ li.user.dropdown {
 
 .popupContent {
     width: calc(100% - 40px);
-    max-width: 960px;
+    max-width: 145vh;
     background: linear-gradient(#48455D, #333142);
     background-size: cover;
     background-position: center;

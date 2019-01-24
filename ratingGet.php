@@ -36,7 +36,7 @@
 
         if (mysqli_stmt_num_rows($stmt) > 0) {
             while (mysqli_stmt_fetch($stmt)) {
-                echo' <div class="iframe"><iframe src="https://www.youtube.com/embed/' . $Url . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+                echo' <div class="iframe"><iframe src="https://www.youtube.com/embed/' . $Url . '?rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
                 //WEL DE JUISTE URL IN DATABASE HEBBEN!
 // video en user id moeten nog veranderd worden..........................
 
