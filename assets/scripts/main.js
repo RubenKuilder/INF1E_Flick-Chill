@@ -50,6 +50,16 @@ $(document).ready(function() {
     var flag = 0;
     var limit = 10;
 
+    if($(window).width() < 600) {
+        limit = 4;
+    } else if ($(window).width() < 800) {
+        limit = 10;
+    } else if ($(window).width() < 1080) {
+        limit = 20;
+    } else {
+        limit = 40;
+    }
+
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),
             sURLVariables = sPageURL.split('&'),
