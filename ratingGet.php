@@ -80,7 +80,7 @@
                 if ($countR == 0) {
                     ?> <div>
                         <form action="ratingGet.php" method="post"> 
-                            <i>Rating:</i><input type="submit" name="goed" class="goed" value="">
+                            <i>Rating: </i><input type="submit" name="goed" class="goed" value="">
                             <input type="submit" name="neutraal" class="neutraal" value="">
                             <input type="submit" name="slecht" class="slecht" value="">
                         </form> 
@@ -116,13 +116,13 @@
                 } else {
 
                     if ($rate == 1) {
-                        echo "<i>You rated this video 'good'</i> <input type='submit' name='goed' class='goed' value=''>";
+                        echo "<div class='ratingConfirm'><i>You rated this video 'good'</i> <input type='submit' name='goed' class='goedS' value=''></div>";
                     } else if ($rate == 2) {
-                        echo "<i>You rated this video 'neutral'</i><input type='submit' name='goed' class='neutraal' value=''>";
+                        echo "<div class='ratingConfirm'><i>You rated this video 'neutral'</i><input type='submit' name='goed' class='neutraalS' value=''></div>";
                     } else if ($rate == 3) {
-                        echo "<i>You rated this video 'bad'</i><input type='submit' name='goed' class='slecht' value=''>";
+                        echo "<div class='ratingConfirm'><i>You rated this video 'bad'</i><input type='submit' name='goed' class='slechtS' value=''></div>";
                     } else {
-                        echo '<i>You already rated this video</i>';
+                        echo "<div class='ratingConfirm'><i>You already rated this video</i></div>";
                     }
                     unset($_SESSION['vidId']);
                 }         

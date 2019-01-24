@@ -36,10 +36,10 @@ session_start();
         }
         //   if ($countR > 0) {
         ?> <div>
-            <form action="Rating.php" method="post"> 
-                <input type="submit" name="goed" class="goed" value="">
-                <input type="submit" name="neutraal" class="neutraal" value="">
-                <input type="submit" name="slecht" class="slecht" value="">
+            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post"> 
+                <input type="submit" name="goed" class="goed" value="<?php echo isset($_POST['goed']) ? $_POST['goed'] : '' ?>">
+                <input type="submit" name="neutraal" class="neutraal" value="<?php echo isset($_POST['neutraal']) ? $_POST['neutraal'] : '' ?>">
+                <input type="submit" name="slecht" class="slecht" value="<?php echo isset($_POST['slecht']) ? $_POST['slecht'] : '' ?>">
 
 
             </form> 
