@@ -41,7 +41,23 @@
 // video en user id moeten nog veranderd worden..........................
 
                 $userid = $_SESSION['id'];
-
+                $tableName2 = "tag";
+                $sqlTag = "SELECT genre
+                            FROM tag
+                            JOIN video_tag ON video_tag.TagID= tag.TagID
+                            WHERE videoID='" . $_SESSION['vidId'] . "';" ;
+                            if ($stmt = mysqli_prepare($conn, $sqlTag)) {
+                                if (!mysqli_stmt_execute($stmt)) {
+                                    echo "Error executing query";
+                                    echo "<br /><br />--------------<br /><br />";
+                                    die(mysqli_error($conn));
+                                }
+                            } 
+                        else {
+                            die(mysqli_error($conn));
+                        }
+                   mysqli_stmt_bind_result($stmt, $tags);
+                   mysqli_stmt_store_result($stmt);
 
                 if (isset($_SESSION["videoIdRate"])) {
                     $videoid = $_SESSION["videoIdRate"];
@@ -103,7 +119,7 @@
                     echo '<i>You already rated this video.</i>';
                 }
                
-                echo'<h2>' . $titel . '</h2><p>' . $descr . '</p>';
+                echo'<h2>' . $titel . '</h2><i>' . $tags . '</i><p>' . $descr . '</p>';
             }
         }
         ?>
