@@ -69,10 +69,10 @@ require('header.php');
                         $videoInsertID = mysqli_insert_id($conn);
                         // Video suggestion succesfully added to video table.
 
-                        // echo "<br />-----<br />";
-                        // echo "Video suggestion succesfully added to video table.";
-                        // echo "<br />-----<br />";
-                        // echo $videoInsertID;
+                        echo "<br />-----<br />";
+                        echo "Video suggestion succesfully added to video table.";
+                        echo "<br />-----<br />";
+                        echo $videoInsertID;
 
                         $selectTags = "SELECT * FROM tag WHERE Genre = ?";
                             
@@ -84,9 +84,9 @@ require('header.php');
                                 if(!mysqli_stmt_execute($selectTagsStmt)) {
                                     // An error occured executing the select tag query.
 
-                                    // echo "<br />-----<br />";
-                                    // echo "An error occured executing the select tag query.";
-                                    // echo "<br />-----<br />";
+                                    echo "<br />-----<br />";
+                                    echo "An error occured executing the select tag query.";
+                                    echo "<br />-----<br />";
                                     die(mysqli_error($conn));
                                 }
                             } else {
@@ -95,8 +95,29 @@ require('header.php');
                             mysqli_stmt_store_result($selectTagsStmt);
 
                             if(mysqli_stmt_num_rows($selectTagsStmt) > 0) {
-                                // Tag already exists in database.
-                                // echo "Tag already exists in database";
+                                $insertVideoTag = "INSERT INTO video_tag (tagID, videoID) VALUES (?, ?)";
+                                if($insertVideoTagStmt = mysqli_prepare($conn, $insertVideoTag)) {
+                                    mysqli_stmt_bind_param($insertVideoTagStmt, 'ii', $tagInsertID, $videoInsertID);
+                                    if(mysqli_stmt_execute($insertVideoTagStmt)) {
+                                        echo "<div class='loginMessage'>
+                                                Video suggested. Our staff will review your suggestion before it'll be live.
+                                                <span class='closeLoginMessage'>Close</span>
+                                            </div>";
+
+                                        // Inserted " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.
+
+                                        // echo "<br />-----<br />";
+                                        // echo "Inserted " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.";
+                                        // echo "<br />-----<br />";
+                                    } else {
+                                        // Something went wrong trying to insert " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.
+
+                                        // echo "<br />-----<br />";
+                                        // echo "Something went wrong trying to insert " . $tagInsertID . " and " . $videoInsertID . " into video_tag table.";
+                                        // echo "<br />-----<br />";
+                                    }
+                                    mysqli_stmt_close($insertVideoTagStmt);
+                                }
                             } else {
                                 $insertTag = "INSERT INTO tag (Genre) VALUES (?)";
                                 if($insertTagsStmt = mysqli_prepare($conn, $insertTag)) {
