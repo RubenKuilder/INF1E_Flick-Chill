@@ -50,7 +50,7 @@
                             echo $_SESSION['name'];
                         ?>
                         <?php 
-                        if($_SESSION['rol'] > 2){
+                        if($_SESSION['rol'] > 1){
                             echo ' <div class="dropcontent">
                                         <div class="droptop">
                                         </div>
