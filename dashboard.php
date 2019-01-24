@@ -5,12 +5,17 @@ if ($_SESSION['id'] <= "1") {
     header('location:index.php');
     exit();
 }
-?>
-<?php
+
 require('system/config.php');
 require('header.php');
+if(isset($_GET['search'])){
+    $dTitel = ucfirst(($_GET['search']));
+} else {
+    $dTitel = 'Dashboard';
+}
+
 ?>
-<h1 id="dashboardTitle">Dashboard</h1>
+<h1 id="dashboardTitle"><?php echo $dTitel; ?> </h1>
 <section id="dashboardContainer">
 </section>
 
