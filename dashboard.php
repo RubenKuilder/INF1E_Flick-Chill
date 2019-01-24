@@ -11,7 +11,7 @@ require('header.php');
 if(isset($_GET['search'])){
     $dTitel = ucfirst(($_GET['search']));
 } else {
-    $dTitel = 'Dashboard';
+    $dTitel = 'Home';
 }
 
 ?>
