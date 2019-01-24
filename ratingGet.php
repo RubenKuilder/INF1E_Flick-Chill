@@ -103,7 +103,7 @@
                         if ($stmt = mysqli_prepare($conn, $query)) {
                             if (mysqli_stmt_execute($stmt)) {
                                 unset($_SESSION['vidId']);
-                                header('Location: Dashboard.php');
+                                header('Location: dashboard.php');
                             } else {
                                 echo "Error executing query";
                                 die(mysqli_error($conn));
