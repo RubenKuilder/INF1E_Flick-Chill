@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['id'] == "") {
+if ($_SESSION['id'] == "" || $_SESSION['rol'] == "1") {
     header('location:index.php');
     exit();
 }
@@ -14,7 +14,7 @@ include('header.php')
 
 
             if (!mysqli_select_db($conn, $databasename)) {
-                echo "<p>There are no video's suggested</p>";
+                echo "<p>Uplink error, unable to connect to the database</p>";
             } else {
                
                 $SQLstring = "SELECT * FROM video WHERE isLive = 0;";
@@ -23,9 +23,9 @@ include('header.php')
                     mysqli_stmt_bind_result($stmt, $vId, $uId, $iApp, $iLive, $desc, $url, $tumb, $title);
                     mysqli_stmt_store_result($stmt);
                     if (mysqli_stmt_num_rows($stmt) == 0) {
-                        echo "<p>There are no videos suggested</p>";
+                        echo "<center><p><br><br><br><br>There are no videos suggested</p></center>";
                     } else {
-                        echo "<p><a href='dashboard.php'>Click here to go back to the dashboard</a></p><br>";
+                        echo "<br><br><br><br><p><a href='dashboard.php'>Click here to go back to the dashboard</a></p><br>";
                         echo "<p>The following videos are suggested:</p>";
                         echo "<table width='100%' border='1'>";
                         echo    "<tr><th>User id</th>
