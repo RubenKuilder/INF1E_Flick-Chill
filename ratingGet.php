@@ -131,7 +131,7 @@
                 if(mysqli_stmt_num_rows($stmt2) > 0){
                     echo "<i>Tags: ";
                     while(mysqli_stmt_fetch($stmt2)){
-                        echo  $tags . " ";
+                        echo  "<a href='dashboard.php?search=" . $tags . "'>" . $tags . "</a> ";
                     }
                     echo "</i><p></p>";
                 }
