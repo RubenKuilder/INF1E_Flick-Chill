@@ -47,7 +47,6 @@ $(document).ready(function() {
         }
     });
 
-    var flag = 0;
     var limit = 10;
 
     if($(window).width() < 600) {
@@ -95,7 +94,6 @@ $(document).ready(function() {
             success: function (response)
             {
                 $('#dashboardContainer').append(response);
-                flag += 10;
             }
         });
         
@@ -117,7 +115,6 @@ $(document).ready(function() {
                     success: function (response)
                     {
                         $('#dashboardContainer').append(response);
-                        flag += 10;
                     }
                 });
             }
@@ -143,7 +140,6 @@ $(document).ready(function() {
             success: function (response)
             {
                 $('#dashboardContainer').append(response);
-                flag += 10;
             }
         });
         
@@ -166,7 +162,6 @@ $(document).ready(function() {
                     success: function (response)
                     {
                         $('#dashboardContainer').append(response);
-                        flag += 10;
                     }
                 });
             }
