@@ -36,12 +36,28 @@
 
         if (mysqli_stmt_num_rows($stmt) > 0) {
             while (mysqli_stmt_fetch($stmt)) {
-                echo' <div class="iframe"><iframe src="https://www.youtube.com/embed/' . $Url . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+                echo' <div class="iframe"><iframe src="https://www.youtube.com/embed/' . $Url . '?rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
                 //WEL DE JUISTE URL IN DATABASE HEBBEN!
 // video en user id moeten nog veranderd worden..........................
 
                 $userid = $_SESSION['id'];
-
+                $tableName2 = "tag";
+                $sqlTag = "SELECT genre
+                            FROM tag
+                            JOIN video_tag ON video_tag.TagID= tag.TagID
+                            WHERE videoID='" . $_SESSION['vidId'] . "';" ;
+                            if ($stmt = mysqli_prepare($conn, $sqlTag)) {
+                                if (!mysqli_stmt_execute($stmt)) {
+                                    echo "Error executing query";
+                                    echo "<br /><br />--------------<br /><br />";
+                                    die(mysqli_error($conn));
+                                }
+                            } 
+                        else {
+                            die(mysqli_error($conn));
+                        }
+                   mysqli_stmt_bind_result($stmt, $tags);
+                   mysqli_stmt_store_result($stmt);
 
                 if (isset($_SESSION["videoIdRate"])) {
                     $videoid = $_SESSION["videoIdRate"];
@@ -110,8 +126,9 @@
                     }
                     unset($_SESSION['vidId']);
                 }
+ 
+                echo'<h2>' . $titel . '</h2><i>' . $tags . '</i><p>' . $descr . '</p>';
 
-                echo'<h2>' . $titel . '</h2><p>' . $descr . '</p>';
             }
         }
         ?>

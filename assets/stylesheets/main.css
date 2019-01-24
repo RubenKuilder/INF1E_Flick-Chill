@@ -8,11 +8,15 @@ body {
     background-position: center;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
     color: white;
-	min-height:100vh;
+    min-height:100vh;
     height:100%;
-	position: relative;
+    position: relative;
+    
 }
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 ul {
     list-style: none;
 }
@@ -21,12 +25,31 @@ a {
     text-decoration: none;
     color: #fff;
 }
+/* width */
+::-webkit-scrollbar {
+  width: 11px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #333142 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FB4778; 
+  border-radius: 5px;
+}
+
+
+
 
 /* DASHBOARD CSS START */
 
 #dashboardTitle {
     margin-bottom: 20px;
     padding-left: 20px;
+    margin-top: 80px;
 }
 
 #dashboardContainer {
@@ -195,6 +218,7 @@ body#loginPage {
     width: 100%;
     box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
     margin-bottom: 30px;
+    position: fixed;
 }
 
 .navBtns, .navBtns li, .logo, .user, .border, .header form, .header form input {
@@ -348,11 +372,11 @@ li.user.dropdown {
 	content: "";
 	width: 0; 
 	height: 0; 
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	border-top: 10px solid #fff;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid #fff;
 	position: absolute;
-    left: 20px;
+    left: 30px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -398,7 +422,7 @@ li.user.dropdown {
   
 /* MOBILE HEADER START*/
 .header.mobile {
-	z-index: 9999999;
+    z-index: 9999999;
 }
 
 .header.mobile ul {
@@ -455,6 +479,7 @@ li.user.dropdown {
     position: absolute;
     bottom: 0;
     left: 0;
+    position: fixed;
 }
 .social{
     width: 20px;
@@ -495,8 +520,7 @@ li.user.dropdown {
 
 .popupContent {
     width: calc(100% - 40px);
-    max-width: 1200px;
-    
+    max-width: 135vh;
     background: linear-gradient(#48455D, #333142);
     background-size: cover;
     background-position: center;
@@ -691,7 +715,7 @@ iframe{
     }
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:600px) {
     #dashboardContainer {
         grid-template-columns: repeat(auto-fill, calc(100vw - 40px));
     }

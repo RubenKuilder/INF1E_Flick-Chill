@@ -10,6 +10,7 @@
                     <a href="https://www.instagram.com/nhlstenden/"><img class="social" src="assets/images/instagram.png"></a>
                     <a href="https://www.youtube.com/channel/UCvyRcZ21kGoePNJaBDlQPlQ"><img class="social" src="assets/images/youtube.png"></a>
                     <a href="https://www.linkedin.com/school/nhlstenden/"><img class="social" src="assets/images/linkedin.png"></a>
+                    <a href="aboutus.php"><img class="social" src="assets/images/about.png"></a>
                 </p>
             </div> 
         </div>
