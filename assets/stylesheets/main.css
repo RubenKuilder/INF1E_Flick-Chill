@@ -684,6 +684,9 @@ iframe{
     overflow-y:scroll;
     word-wrap: break-word;
 }
+textarea::-webkit-scrollbar-track{
+    background-color: #ffffff;
+}
 /* SUGGESTIONS PAGE END */
 
 @media screen and (max-width:1400px) {
