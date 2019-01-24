@@ -8,9 +8,10 @@ body {
     background-position: center;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
     color: white;
-	min-height:100vh;
+    min-height:100vh;
     height:100%;
-	position: relative;
+    position: relative;
+    
 }
 html, body {
     max-width: 100%;
@@ -48,6 +49,7 @@ a {
 #dashboardTitle {
     margin-bottom: 20px;
     padding-left: 20px;
+    margin-top: 80px;
 }
 
 #dashboardContainer {
@@ -216,6 +218,7 @@ body#loginPage {
     width: 100%;
     box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
     margin-bottom: 30px;
+    position: fixed;
 }
 
 .navBtns, .navBtns li, .logo, .user, .border, .header form, .header form input {
@@ -419,7 +422,7 @@ li.user.dropdown {
   
 /* MOBILE HEADER START*/
 .header.mobile {
-	z-index: 9999999;
+    z-index: 9999999;
 }
 
 .header.mobile ul {
@@ -476,6 +479,7 @@ li.user.dropdown {
     position: absolute;
     bottom: 0;
     left: 0;
+    position: fixed;
 }
 .social{
     width: 20px;
@@ -516,7 +520,7 @@ li.user.dropdown {
 
 .popupContent {
     width: calc(100% - 40px);
-    max-width: 145vh;
+    max-width: 135vh;
     background: linear-gradient(#48455D, #333142);
     background-size: cover;
     background-position: center;
