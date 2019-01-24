@@ -711,7 +711,7 @@ iframe{
     }
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:600px) {
     #dashboardContainer {
         grid-template-columns: repeat(auto-fill, calc(100vw - 40px));
     }

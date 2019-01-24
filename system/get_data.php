@@ -22,9 +22,11 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
                 foreach ($searching as $a => $z) {
                     $end = $end . " OR v.Description LIKE '%$z%' OR t.Genre = '$z'";
                 }
-            }$selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE (v.Description LIKE '%$search%'" . $end . ") AND v.isLive = 1 GROUP BY v.VideoID";
+            }
+
+            $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE (v.Description LIKE '%$search%'" . $end . ") AND v.isLive = 1 GROUP BY v.VideoID";
         } else {
-            $selectQuery = "SELECT * FROM " . $tableName . " WHERE isLive=1 AND VideoID > " . $lastID . " ORDER BY VideoID ASC";
+            $selectQuery = "SELECT * FROM " . $tableName . " WHERE isLive=1 AND VideoID > " . $lastID . " ORDER BY VideoID ASC LIMIT " . $limit;
         }
     } else {
         if (isset($_GET['search'])) {
@@ -36,9 +38,9 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
                     $end = $end . " OR v.Description LIKE '%$z%' OR t.Genre = '$z'";
                 }
             }
-            $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE (v.Description LIKE '%$search%'" . $end . ") AND v.isLive = 1 GROUP BY v.VideoID;";
+            $selectQuery = "SELECT v.VideoID, UserID, isApp, isLive, Description, URL, Thumbnail, Title FROM video as v JOIN video_tag as vt on vt.VideoID = v.VideoID join tag as t on t.TagID = vt.TagID WHERE (v.Description LIKE '%$search%'" . $end . ") AND v.isLive = 1 GROUP BY v.VideoID";
         } else {
-            $selectQuery = "SELECT * FROM " . $tableName . " WHERE isLive=1 ORDER BY VideoID ASC";
+            $selectQuery = "SELECT * FROM " . $tableName . " WHERE isLive=1 ORDER BY VideoID ASC LIMIT " . $limit;
 
         }
     }
