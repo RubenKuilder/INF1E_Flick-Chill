@@ -12,7 +12,7 @@
         require('system/config.php');
         if (!isset($_SESSION['vidId'])) {
             $_SESSION['vidId'] = $_GET['dataID'];
-        } else if (isset($_GET['dataID'])){
+        } else if (isset($_GET['dataID'])) {
             $_SESSION['vidId'] = $_GET['dataID'];
         }
         $tableName = "video";
@@ -62,7 +62,7 @@
                 if (isset($_SESSION["videoIdRate"])) {
                     $videoid = $_SESSION["videoIdRate"];
                 }
-                if ($stmt = mysqli_prepare($conn, "SELECT Count(Rating) FROM user_likes WHERE UserID = " . $userid . " AND VideoID = " . $_SESSION['vidId'] . ";")) {
+                if ($stmt = mysqli_prepare($conn, "SELECT Count(Rating), Rating FROM user_likes WHERE UserID = " . $userid . " AND VideoID = " . $_SESSION['vidId'] . ";")) {
                     if (!mysqli_stmt_execute($stmt)) {
                         echo "Error executing query";
                         die(mysqli_error($conn));
@@ -72,7 +72,7 @@
                     die(mysqli_error($conn));
                 }
 
-                mysqli_stmt_bind_result($stmt, $countR);
+                mysqli_stmt_bind_result($stmt, $countR, $rate);
                 mysqli_stmt_store_result($stmt);
                 while (mysqli_stmt_fetch($stmt)) {
                     
@@ -88,11 +88,11 @@
                         $rating = 0;
 
                         if (isset($_POST['goed'])) {
-                            $rating = 3;
+                            $rating = 1;
                         } else if (isset($_POST['neutraal'])) {
                             $rating = 2;
                         } else if (isset($_POST['slecht'])) {
-                            $rating = 1;
+                            $rating = 3;
                         }
                         ?>
                     </div>   
@@ -114,11 +114,18 @@
                         }
                     }
                 } else {
-                    unset($_SESSION['vidId']);
 
-                    echo '<i>You already rated this video.</i>';
-                }
-               
+                    if ($rate == 1) {
+                        echo "<i>You rated this video 'good'</i> <input type='submit' name='goed' class='goed' value=''>";
+                    } else if ($rate == 2) {
+                        echo "<i>You rated this video 'neutral'</i><input type='submit' name='goed' class='neutraal' value=''>";
+                    } else if ($rate == 3) {
+                        echo "<i>You rated this video 'bad'</i><input type='submit' name='goed' class='slecht' value=''>";
+                    } else {
+                        echo '<i>You already rated this video</i>';
+                    }
+                    unset($_SESSION['vidId']);
+                }         
                 echo'<h2>' . $titel . '</h2>';
                 echo '<p>' . $descr . '</p>';
                 if(mysqli_stmt_num_rows($stmt2) > 0){
@@ -128,6 +135,7 @@
                     }
                     echo "</i><p></p>";
                 }
+                echo'<h2>' . $titel . '</h2><p>' . $descr . '</p>';
             }
         }
         ?>

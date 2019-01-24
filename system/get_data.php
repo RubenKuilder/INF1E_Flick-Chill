@@ -62,7 +62,7 @@ if (isset($_GET['offset']) && isset($_GET['limit'])) {
     if (mysqli_stmt_num_rows($stmt) > 0) {
         while (mysqli_stmt_fetch($stmt)) {
 
-            $selectLikes = "SELECT COUNT(UserID) FROM user_likes WHERE VideoID = " . $id;
+            $selectLikes = "SELECT COUNT(UserID) FROM user_likes WHERE VideoID = " . $id . " AND Rating = 1";
             $selectNeutraal = "SELECT COUNT(UserID) FROM user_likes WHERE VideoID = " . $id . " AND Rating = 2";
             $selectDislikes = "SELECT COUNT(UserID) FROM user_likes WHERE VideoID = " . $id . " AND Rating = 3";
 
