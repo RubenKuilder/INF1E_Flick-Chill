@@ -540,6 +540,9 @@ li.user.dropdown {
     margin:10px;
     margin-top: 5px;
 }
+.popupContent i{
+    margin-right: 0px;
+}
 .popupContent h2{
     margin-bottom: 5px;
 }
@@ -548,9 +551,10 @@ li.user.dropdown {
     float: right;
     margin-right: 10px;
 }
-.ratingContainer{
+.ratingConfirm{
     float: right;
-    cursor: pointer;
+    cursor: default;
+    margin-right: 10px;
 }
 iframe{
     position: absolute;
@@ -599,6 +603,37 @@ iframe{
     text-align: center;
     padding: 20px;
 }
+/* Buttons */
+.goedS {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 1px 8px;   
+    display: inline-block;
+    margin: 4px 2px;
+    border-radius: 500px;
+}
+.neutraalS {
+    background-color: #fff;
+    border: none;
+    color: white;
+    padding: 1px 8px;    
+    display: inline-block;
+    margin: 4px 2px;
+    border-radius: 500px;
+}
+
+.slechtS {
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    padding: 1px 8px; 
+    display: inline-block;
+    margin: 4px 2px;
+    border-radius: 500px;
+}
+
+
 
 /* SUGGESTIONS PAGE START */
 #suggestieswrapper{
